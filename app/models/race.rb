@@ -1,4 +1,6 @@
 class Race < ActiveRecord::Base
+	belongs_to :ballot
+	has_one :vote
 
 	def show
 		@race = Race.find(params[:id])
