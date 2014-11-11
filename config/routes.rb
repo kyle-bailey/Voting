@@ -55,5 +55,9 @@ Rails.application.routes.draw do
   #   end
 
   root 'welcome#index'
-  
+
+  resources :ballot
+  resources :race
+  resources :vote 
+
 end
