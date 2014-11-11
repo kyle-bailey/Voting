@@ -8,20 +8,25 @@ class BallotController < ApplicationController
 		@ballot = Ballot.find(params[:id])
 	end
 
-	def create
-		@ballot = Ballot.new(ballot_params)
+	def new
+		@ballot = Ballot.create()
 		t = rand(2);
 		if(t == 0)
-			@ballot.type = "n"
+			@ballot.organization = "n"
 		else
-			@ballot.type = "s"
+			@ballot.organization = "s"
 		end
+		@ballot.save()
+	end
+
+	def create
+		@ballot = Ballot.new(ballot_params)
 		@ballot.save
 	end
 
 	private
 	def ballot_params
-		params.require(:ballot).permit(:type)
+		params.require(:ballot).permit(:organization)
 	end
 
 end
