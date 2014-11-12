@@ -17,11 +17,17 @@ class BallotController < ApplicationController
 			@ballot.organization = "s"
 		end
 		@ballot.save()
+		#want to create a set of races for each ballot
+		redirect_to ballot_url(@ballot)
 	end
 
 	def create
 		@ballot = Ballot.new(ballot_params)
 		@ballot.save
+	end
+
+	def create_races
+		#create all the races for this ballot
 	end
 
 	private

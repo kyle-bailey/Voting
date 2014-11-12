@@ -10,7 +10,7 @@ class RaceController < ApplicationController
 
 	private
 	def race_params
-		params.require(:race).permit(:title, :description, :type)
+		params.require(:race).permit(:title, :description, :race_type)
 	end
 
 end
