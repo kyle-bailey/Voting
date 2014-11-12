@@ -1,1 +1,4 @@
 <%=	@ballot.instructions %></br>
+<% if @ballot.organization == "s" %>
+	<%= link_to "Start Voting", @races.first, class: "btn btn-lg btn-primary" %>
+<% end %> 
