@@ -1,4 +1,10 @@
-<% @ballots.each do  |b| %>
+<!-- <% @ballots.each do  |b| %>
 	<%= b.id %></br>
 	<%=	b.organization %></br>
-<% end %>
+<% end %> -->
+
+<div class="center jumbotron">
+  <h1>Ballot Overview</h1>
+  <h2>Ballot Instruction Page<h2> 
+  <%= link_to "Begin", 'ballot/new', class: "btn btn-lg btn-primary" %>
+</div>
