@@ -20,7 +20,7 @@ class BallotController < ApplicationController
 		end
 		@ballot.save()
 		#want to create a set of races for each ballot
-		redirect_to ballot_url(@ballot)
+		redirect_to "/ballot/#{@ballot.id}/create_races"
 	end
 
 	def create
@@ -31,7 +31,8 @@ class BallotController < ApplicationController
 	def create_races
 		#create all the races for this ballot
 		@ballot = Ballot.find(params[:id])
-		@ballot.races.create()
+		@ballot.races.create(category:"President and Vice President", race_type:"Choose One", title:"President and Vice President", ballot_id: @ballot.id)
+		redirect_to ballot_url(@ballot)
 	end
 
 	private

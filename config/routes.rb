@@ -56,7 +56,11 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :ballot
+  resources :ballot do
+    member do
+      get 'create_races'
+    end
+  end
   resources :race
   resources :vote 
 
