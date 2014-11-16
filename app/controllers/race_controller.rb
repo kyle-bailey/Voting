@@ -2,6 +2,7 @@ class RaceController < ApplicationController
 
 	def show
 		@race = Race.find(params[:id])
+		@ballot = Ballot.find(@race.ballot_id)
 	end
 
 	def create
