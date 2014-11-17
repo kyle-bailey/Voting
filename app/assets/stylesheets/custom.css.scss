@@ -32,30 +32,6 @@ textarea {
 
 /* typography */
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $gray-light;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
 
 
 /* header */
@@ -100,6 +76,7 @@ footer {
     }
   }
 }
+/* Other */
 
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
@@ -107,4 +84,34 @@ footer {
 
   display: flex;
   align-items: center;
+}
+
+.btn-custom {
+    padding: 80px 10px;
+    height: 200px;
+    width: 200px;
+    margin: 5px;
+    font-size: 30px;
+    line-height: inherit;
+    vertical-align: middle;
+
+    /*-webkit-border-radius: 6px;*/
+    /*-moz-border-radius: 6px;*/
+    /*border-radius: 6px;*/
+
+}
+
+
+.btn-custom-medium {
+    height: 230px;
+    width: 230px;
+    font-size: 25px;
+    text-align: center;
+    line-height: inherit;
+    vertical-align: middle;
+
+    /*-webkit-border-radius: 6px;*/
+    /*-moz-border-radius: 6px;*/
+    /*border-radius: 6px;*/
+
 }

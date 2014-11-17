@@ -1,10 +1,32 @@
-<!-- <% @ballots.each do  |b| %>
-	<%= b.id %></br>
-	<%=	b.organization %></br>
-<% end %> -->
-
-<div class="center jumbotron">
-  <h1>Ballot Overview</h1>
-  <h2>Ballot Instruction Page<h2> 
-  <%= link_to "Begin", 'ballot/new', class: "btn btn-lg btn-primary" %>
+<div class"container-fluid">
+	<div class="jumbotron center">
+		<% if false %>
+    	Once we have a method to iterate from race to race, create each button using iteration below. 
+    	<% @ballot.races.each do |r| %>
+    		<div class="btn btn-lg btn-primary">
+    			<%=link_to @r.title, @races.first, class: "btn btn-lg btn-primary btn-block" %>
+    		</div>	
+    		<% end%>
+		<% end%> 
+		<h1>Races Overview</h1>
+		<br>
+		<div class="row">
+			<%= link_to "Race 1", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 2", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 3", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 4", "#", class: "btn btn-custom btn-primary"%>
+		</div>
+		<div class="row">
+			<%= link_to "Race 5", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 6", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 7", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 8", "#", class: "btn btn-custom btn-primary"%>
+		</div>
+		<div class="row">
+			<%= link_to "Race 9", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 10", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 11", "#", class: "btn btn-custom btn-primary"%>
+			<%= link_to "Race 12", "#", class: "btn btn-custom btn-primary"%>
+		</div>
+	</div>
 </div>

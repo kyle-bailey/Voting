@@ -1,30 +1,23 @@
-<<<<<<< HEAD
-<div class="container center">
-	<h3><%= @race.title %></h3>
-	<div class="jumbotron">
-		<div class="radio">
-		  <label><input type="radio" name="opt1"><%=	@race.race_type %></label>
-		</div>
-		<div class="radio">
-		  <label><input type="radio" name="opt2"><%=	@race.race_type %></label>
-		</div>
-		<div class="radio">
-		  <label><input type="radio" name="opt3"><%=	@race.race_type %></label>
-		</div>
-			<div class="radio">
-		  <label><input type="radio" name="opt4"><%=	@race.race_type %></label>
-		</div>
-	</div> 
-
-	<%= link_to "Next", @race.first , class: "btn btn-lg btn-primary" %>
-
+<div class="container-fluid">
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+    		<h3 class="panel-title"><%= @race.title %></h3>
+  		</div>
+	  	<div class="panel-body">
+		    	<% @race.candidate.each do |c| %>
+		    		<div class="radio">
+		    			<label><input type="radio" name="#{c}"><%= c.name %> <%= c.party %></br></label>
+		    		</div>	
+				<% end %>
+	  	</div>
+	  	<nav>
+		  <ul class="pager">
+		    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+		    <li class="next"><a href="#">Next <span aria-hidden="true">&rarr;</span></a></li>
+		  </ul>
+		</nav>
+	</div>	
 </div>
 
 
-=======
-<%=	@race.title %></br>
-<%=	@race.race_type %></br>
-<% @race.candidate.each do |c| %>
-	<%= c.name %> <%= c.party %></br>
-<% end %>
->>>>>>> fb93248195af33ed02464cb15ddf644a3b4a0b5d
+
