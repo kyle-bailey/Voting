@@ -32,7 +32,8 @@ class BallotController < ApplicationController
 	def create_races
 		#create all the races for this ballot
 		@ballot = Ballot.find(params[:id])
-		@ballot.races.create(category:"President and Vice President", race_type:"Choose One", title:"President and Vice President", ballot_id: @ballot.id)
+		@race = @ballot.races.create(category:"President and Vice President", race_type:"Choose One", title:"President and Vice President", ballot_id: @ballot.id)
+		#@race.candidates.create(name:)
 		redirect_to ballot_url(@ballot)
 	end
 
