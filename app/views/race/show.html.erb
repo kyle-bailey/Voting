@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container center">
 	<h3><%= @race.title %></h3>
 	<div class="jumbotron">
@@ -20,3 +21,10 @@
 </div>
 
 
+=======
+<%=	@race.title %></br>
+<%=	@race.race_type %></br>
+<% @race.candidate.each do |c| %>
+	<%= c.name %> <%= c.party %></br>
+<% end %>
+>>>>>>> fb93248195af33ed02464cb15ddf644a3b4a0b5d
