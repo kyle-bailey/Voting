@@ -61,7 +61,11 @@ Rails.application.routes.draw do
       get 'create_races'
     end
   end
-  resources :race
+  resources :race do
+    member do
+      put 'submit_vote_and_go_to_next_race'
+    end
+  end
   resources :vote 
 
 end
