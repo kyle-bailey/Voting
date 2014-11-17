@@ -14,6 +14,16 @@ class RaceController < ApplicationController
 		#then go to the next race if there is one
 	end
 
+	def submit_vote_and_return
+		#for non-sequential ballots: submit the vote and return to overview page
+		@race = Race.find(params[:id])
+		@ballot = Ballot.find(@race.ballot_id)
+
+		#create/edit vote
+
+		redirect_to "/ballot/#{@ballot.id}" 
+	end
+
 	private
 	def race_params
 		params.require(:race).permit(:title, :description, :race_type)
