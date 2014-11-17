@@ -1,2 +1,5 @@
 <%=	@race.title %></br>
 <%=	@race.race_type %></br>
+<% @race.candidate.each do |c| %>
+	<%= c.name %> <%= c.party %></br>
+<% end %>
