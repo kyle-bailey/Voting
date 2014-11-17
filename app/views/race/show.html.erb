@@ -1,2 +1,22 @@
-<%=	@race.title %></br>
-<%=	@race.race_type %></br>
+<div class="container center">
+	<h3><%= @race.title %></h3>
+	<div class="jumbotron">
+		<div class="radio">
+		  <label><input type="radio" name="opt1"><%=	@race.race_type %></label>
+		</div>
+		<div class="radio">
+		  <label><input type="radio" name="opt2"><%=	@race.race_type %></label>
+		</div>
+		<div class="radio">
+		  <label><input type="radio" name="opt3"><%=	@race.race_type %></label>
+		</div>
+			<div class="radio">
+		  <label><input type="radio" name="opt4"><%=	@race.race_type %></label>
+		</div>
+	</div> 
+
+	<%= link_to "Next", @race.first , class: "btn btn-lg btn-primary" %>
+
+</div>
+
+

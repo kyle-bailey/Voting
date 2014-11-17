@@ -14,10 +14,10 @@ class BallotController < ApplicationController
 		t = rand(2);
 		if(t == 0)
 			@ballot.organization = "n"
-			@ballot.instructions = "Instructions for a non-sequential ballot"
+			@ballot.instructions = "How to Vote (Non-Sequential)"
 		else
 			@ballot.organization = "s"
-			@ballot.instructions = "Instructions for a sequential ballot"
+			@ballot.instructions = "How To Vote (Sequential)"
 		end
 		@ballot.save()
 		#want to create a set of races for each ballot
@@ -32,7 +32,10 @@ class BallotController < ApplicationController
 	def create_races
 		#create all the races for this ballot
 		@ballot = Ballot.find(params[:id])
-		@ballot.races.create(category:"President and Vice President", race_type:"Choose One", title:"President and Vice President", ballot_id: @ballot.id)
+		@ballot.races.create(category:"President and Vice President", race_type:"Choose One", title:"U.S. President and Vice President", ballot_id: @ballot.id)
+		@ballot.races.create(category:"Senator", race_type:"Choose One", title:"U.S. Senator", ballot_id: @ballot.id)
+		@ballot.races.create(category:"Representative", race_type:"Choose One", title:"U.S. Representative", ballot_id: @ballot.id)
+		@ballot.races.create(category:"Governor", race_type:"Choose One", title:"Governor", ballot_id: @ballot.id)
 		redirect_to ballot_url(@ballot)
 	end
 
