@@ -1,16 +1,16 @@
 <div class"container-fluid">
 	<div class="jumbotron center">
-		<% if false %>
+		<% if true %>
     	Once we have a method to iterate from race to race, create each button using iteration below. 
     	<% @ballot.races.each do |r| %>
     		<div class="btn btn-lg btn-primary">
-    			<%=link_to @r.title, @races.first, class: "btn btn-lg btn-primary btn-block" %>
+    			<%=link_to r.title, race_path(r), class: "btn btn-lg btn-primary btn-block" %>
     		</div>	
     		<% end%>
 		<% end%> 
 		<h1>Races Overview</h1>
 		<br>
-		<div class="row">
+<!-- 		<div class="row">
 			<%= link_to "Race 1", "#", class: "btn btn-custom btn-primary"%>
 			<%= link_to "Race 2", "#", class: "btn btn-custom btn-primary"%>
 			<%= link_to "Race 3", "#", class: "btn btn-custom btn-primary"%>
@@ -27,6 +27,6 @@
 			<%= link_to "Race 10", "#", class: "btn btn-custom btn-primary"%>
 			<%= link_to "Race 11", "#", class: "btn btn-custom btn-primary"%>
 			<%= link_to "Race 12", "#", class: "btn btn-custom btn-primary"%>
-		</div>
+		</div> -->
 	</div>
 </div>
