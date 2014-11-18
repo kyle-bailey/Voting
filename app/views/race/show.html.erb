@@ -6,7 +6,7 @@
 	  	<div class="panel-body">
 		    	<% @race.candidate.each do |c| %>
 		    		<div class="radio">
-		    			<label><input type="radio" name="#{c}"><%= c.name %> <%= c.party %></br></label>
+		    			<label><input type="radio" name="#{c}" <% if @race.vote != nil && @race.vote.candidate = c.name %>checked="true"<% end %> ><%= c.name %> <%= c.party %></br></label>
 		    		</div>	
 				<% end %>
 	  	</div>
