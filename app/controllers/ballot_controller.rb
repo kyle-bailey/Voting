@@ -20,7 +20,6 @@ class BallotController < ApplicationController
 			@ballot.instructions = "How To Vote (Sequential)"
 		end
 		@ballot.save()
-		#want to create a set of races for each ballot
 		redirect_to "/ballot/#{@ballot.id}/create_races"
 	end
 

@@ -11,7 +11,16 @@ class RaceController < ApplicationController
 
 	def submit_vote_and_go_to_next_race
 		#take the vote from the page and submit it for this race
-		#then go to the next race if there is one
+		#TODO
+		#go to the next race if there is one
+		@race = Race.find(params[:id])
+		@ballot = Ballot.find(@race.ballot_id)
+		@next_race = Race.find_by_id(params[:id].to_i + 1)
+		if(@next_race)
+			redirect_to "/race/#{@next_race.id}"
+		else
+			redirect_to "/ballot"
+		end
 	end
 
 	def submit_vote_and_return
