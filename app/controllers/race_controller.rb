@@ -19,7 +19,7 @@ class RaceController < ApplicationController
 		if(@next_race)
 			redirect_to "/race/#{@next_race.id}"
 		else
-			redirect_to "/ballot"
+			redirect_to "/ballot/#{@ballot.id}"
 		end
 	end
 

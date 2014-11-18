@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :ballot do
     member do
       get 'create_races'
+      get 'instructions'
     end
   end
   resources :race do

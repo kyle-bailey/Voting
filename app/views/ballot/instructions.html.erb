@@ -1,0 +1,33 @@
+<div class="center jumbotron">
+	<div class="container-fluid"> 
+		<h2><%=	@ballot.instructions %></h2>
+			<br>
+			<!-- Placeholder text. Will have the appropriate instructions depending on balot organization, and will be placed inside its respective conditional statement below.  -->
+			<p class="text-left"><strong>To vote for the candidate of your choice</strong>, press the circle next to his/her name. The circle will turn blue.</p>
+			<p class="text-left"><strong>To write in a candidate</strong>, touch "Touch here to write in a name." You will get more instructions
+			on how to complete your write-in.</p>
+			<p class="text-left"><strong>If you want to change your vote or make a mistake</strong>, simply touch the circle next to the candidate you do want.</p>
+			<p class="text-left"><strong>You do not have to vote in every race.</strong>Your ballot will still be counted even if you do not vote in every race.</p>
+		<% if @ballot.organization == "s" %>
+				<div class="row">
+			  	<div class="col-xs-6 col-md-4">
+			  		<%= link_to "Back", "/", class: "btn btn-lg btn-primary" %>
+			  	</div>
+			  	</div>
+			  	<div class="row">
+			  	<div class="col-xs-6 col-md-4">
+			  		<%= link_to "Start Voting", @races.first, class: "btn btn-lg btn-primary" %>
+			  	</div>
+			  	</div>
+		<% end %> 
+
+		<% if @ballot.organization == "n" %>
+		<!-- Take user to ballot.index page: Has list of all the races -->
+			<div class="row">
+		  		<%= link_to "Start Voting", "/ballot/#{@ballot.id}", class: "btn btn-lg btn-primary" %>
+		  	</div>
+
+		<% end %> 
+	</div> 
+</div>
+

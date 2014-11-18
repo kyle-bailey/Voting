@@ -28,6 +28,10 @@ class BallotController < ApplicationController
 		@ballot.save
 	end
 
+	def instructions
+		@ballot = Ballot.find(params[:id])
+	end
+
 	def create_races
 		#create all the races for this ballot
 		@ballot = Ballot.find(params[:id])
@@ -104,7 +108,7 @@ class BallotController < ApplicationController
 		@race = @ballot.races.create(category:"State", race_type:"Choose One", title:"Presiding Judge Texas Supreme Court Place 3", ballot_id: @ballot.id)
 		@race.candidate.create(name: "Tim Grasty", party: "DEM", race_id: @race.id)
 
-		redirect_to ballot_url(@ballot)
+		redirect_to "/ballot/#{@ballot.id}/instructions"
 	end
 
 	private
