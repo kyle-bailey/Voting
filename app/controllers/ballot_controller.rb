@@ -92,9 +92,18 @@ class BallotController < ApplicationController
 		@race.candidate.create(name: "Wesley Steven Millette", party: "DEM", race_id: @race.id)
 
 		#state representative
-		@race = @ballot.races.create(category:"State", race_type:"Choose One", title:"State Representative", ballot_id: @ballot.id)
+		@race = @ballot.races.create(category:"State", race_type:"Choose One", title:"State Representative District 134", ballot_id: @ballot.id)
 		@race.candidate.create(name: "Petra Bencomo", party: "REP", race_id: @race.id)
 		@race.candidate.create(name: "Susanne Rael", party: "DEM", race_id: @race.id)
+
+		#board of education
+		@race = @ballot.races.create(category:"State", race_type:"Choose One", title:"Member State Board of Education District 2", ballot_id: @ballot.id)
+		@race.candidate.create(name: "Peter Varga", party: "REP", race_id: @race.id)
+		@race.candidate.create(name: "Mark Baber", party: "DEM", race_id: @race.id)
+
+		#judge
+		@race = @ballot.races.create(category:"State", race_type:"Choose One", title:"Presiding Judge Texas Supreme Court Place 3", ballot_id: @ballot.id)
+		@race.candidate.create(name: "Tim Grasty", party: "DEM", race_id: @race.id)
 
 		redirect_to ballot_url(@ballot)
 	end
