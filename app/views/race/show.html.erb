@@ -12,7 +12,9 @@
 	  	</div>
 	  	<nav>
 		  <ul class="pager">
-		    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li>
+		  	<% if @ballot.races.first.id != @race.id %>
+		  		<li class="previous"><%= tag("a", href:"/race/#{@race.id - 1}") %><span aria-hidden="true">&larr;</span> Previous</a></li>
+		  	<% end %>
 		    <li class="next"><%= tag("a", href:"/race/#{@race.id}/submit_vote_and_go_to_next_race") %>Next <span aria-hidden="true">&rarr;</span></a></li>
 		  </ul>
 		</nav>
