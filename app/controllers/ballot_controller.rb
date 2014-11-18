@@ -30,6 +30,7 @@ class BallotController < ApplicationController
 
 	def instructions
 		@ballot = Ballot.find(params[:id])
+		@races = @ballot.races
 	end
 
 	def create_races
@@ -144,7 +145,7 @@ class BallotController < ApplicationController
 		@race.candidate.create(name: "Lewis Shine", race_id: @race.id)
 
 		#prop 1
-		@race = @ballot.races.create(category:"Proposition", race_type:"Y/N", title:"Proposition 1", ballot_id: @ballot.id description:"Without raising taxes and in order to pay for public safety, public works,parks and recreation, health care, libraries, and other essential services, shall Harris County and the City of Houston be authorized to retain and spend all city and county tax revenues in excess of the constitutional limitation on total city and county fiscal year spending for ten fiscal years beginning with the 2013 fiscal year, and to retain and spend an amount of city and tax revenues in excess of such limitation for the 2020 fiscal year and for each succeeding fiscal year up to the excess city and county revenue cap, as defined by this measure?")
+		@race = @ballot.races.create(category:"Proposition", race_type:"Y/N", title:"Proposition 1", ballot_id: @ballot.id, description:"Without raising taxes and in order to pay for public safety, public works,parks and recreation, health care, libraries, and other essential services, shall Harris County and the City of Houston be authorized to retain and spend all city and county tax revenues in excess of the constitutional limitation on total city and county fiscal year spending for ten fiscal years beginning with the 2013 fiscal year, and to retain and spend an amount of city and tax revenues in excess of such limitation for the 2020 fiscal year and for each succeeding fiscal year up to the excess city and county revenue cap, as defined by this measure?")
 		@race.candidate.create(name: "Yes", race_id: @race.id)
 		@race.candidate.create(name: "No", race_id: @race.id)
 
