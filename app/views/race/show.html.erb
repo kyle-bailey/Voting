@@ -1,36 +1,46 @@
 <div class="container-fluid">
-	<div class="panel panel-default">
-  		<div class="panel-heading">
-    		<h3 class="panel-title"><%= @race.title %></h3>
-  		</div>
-	  	<div class="panel-body">
-		    	<% @race.candidate.each do |c| %>
-		    		<div class="radio">
-		    			<label><input type="radio" name="#{c}" <% if @race.vote != nil && @race.vote.candidate = c.name %>checked="true"<% end %> ><%= c.name %> <%= c.party %></br></label>
-		    		</div>	
-				<% end %>
+	<br>
+	<br>
+	<br>
+	<div class="row">
+		 <div class="col-md-1"></div>
+  		 <div class="col-md-1"></div>
+  		  <div class="col-md-8">
+			<div class="panel panel-default">
+	  		<div class="panel-heading">
+	    		<h2 class="panel-title"><%= @race.title %></h2>
+	  		</div>
+		  	<div class="panel-body">
+		  			<% if @race.description != nil %>
+	    				<p>@race.description</p>
+	    			<% end %> 
+			    	<% @race.candidate.each do |c| %>
+			    		<div class="radio">
+			    			<label><input type="radio" name="#{c}" <% if @race.vote != nil && @race.vote.candidate = c.name %>checked="true"<% end %> ><%= c.name %> <%= c.party %></br></label>
+			    		</div>	
+					<% end %>
 
 
-	  	<!-- If Sequential, have Previous/Next buttons to iterate through ballot --> 
-	  	<%if @ballot.organization == "s" %> 
-	  		<nav>
-			  <ul class="pager">
-			  	<% if @ballot.races.first.id != @race.id %>
-			  		<li class="previous"><%= tag("a", href:"/race/#{@race.id - 1}") %><span aria-hidden="true">&larr;</span> Previous</a></li>
-			  	<% end %>
-			    <li class="next"><%= tag("a", href:"/race/#{@race.id}/submit_vote_and_go_to_next_race") %>Next <span aria-hidden="true">&rarr;</span></a></li>
-			  </ul>
-			</nav>
-		<% end %> 
+		  	<!-- If Sequential, have Previous/Next buttons to iterate through ballot --> 
+		  	<%if @ballot.organization == "s" %> 
 
-		<!-- If Non-Sequential, only have one button that goes back to maiin page" --> 
-		<%if @ballot.organization == "n" %> 
-		<div class ="row center">
-			<%=link_to "Vote", "/ballot/#{@ballot.id}", class: "btn btn-lg btn-primary" %>
-		</div>
-		<% end %> 
-		</div>
-	</div>	
+				  		<% if @ballot.races.first.id != @race.id %>
+				  			<%=link_to "Previous", "/race/#{@race.id-1}", class: "btn btn-primary" %>
+				  		<% end %>
+						<%=link_to "Next", "/race/#{@race.id}/submit_vote_and_go_to_next_race", class: "btn btn-primary pull-right" %>
+			<% end %> 
+
+			<!-- If Non-Sequential, only have one button that goes back to maiin page" --> 
+			<%if @ballot.organization == "n" %> 
+				<%=link_to "Vote", "/ballot/#{@ballot.id}", class: "btn btn-lg btn-primary pull-right" %>
+			<% end %> 
+			</div>
+			</div>
+		</div>	
+		<div class="col-md-1"></div>
+  		<div class="col-md-1"></div>
+  	</div>
+
 </div>
 
 

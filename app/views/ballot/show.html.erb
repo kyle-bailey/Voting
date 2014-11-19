@@ -2,12 +2,15 @@
 	<div class="jumbotron center">
 		<h1>Non-Sequential Ballot</h1>
 		<br>
+		<table class="table table-hover">
+		</table>
 		<% @ballot.races.each do |r| %>
-    			<%=link_to r.title, race_path(r), class: "btn btn-lg btn-primary" %>
+				<tr>
+    				<td><h3><%=link_to r.title, race_path(r)%></h3></td>
+    			<tr/>
     	<% end%>
+    	</table>
     	<br>
     	<br>
-		<div class="row center">
-			  	<%= link_to "Submit", "#", class: "btn btn-lg btn-success" %>
-	</div>
+		<%= link_to "Submit", "#", class: "btn btn-lg btn-success center" %>
 </div>
