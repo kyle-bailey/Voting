@@ -14,10 +14,10 @@ class BallotController < ApplicationController
 		t = rand(2);
 		if(t == 0)
 			@ballot.organization = "n"
-			@ballot.instructions = "How to Vote (Non-Sequential)"
+			@ballot.instructions = "Instructions"
 		else
 			@ballot.organization = "s"
-			@ballot.instructions = "How To Vote (Sequential)"
+			@ballot.instructions = "Instructions"
 		end
 		@ballot.save()
 		redirect_to "/ballot/#{@ballot.id}/create_races"

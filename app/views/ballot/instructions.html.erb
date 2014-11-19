@@ -3,17 +3,15 @@
 		<h2><%=	@ballot.instructions %></h2>
 			<br>
 			<!-- Placeholder text. Will have the appropriate instructions depending on balot organization, and will be placed inside its respective conditional statement below.  -->
-			<p class="text-left"><strong>To vote for the candidate of your choice</strong>, press the circle next to his/her name. The circle will turn blue.</p>
-			<p class="text-left"><strong>To write in a candidate</strong>, touch "Touch here to write in a name." You will get more instructions
-			on how to complete your write-in.</p>
-			<p class="text-left"><strong>If you want to change your vote or make a mistake</strong>, simply touch the circle next to the candidate you do want.</p>
-			<p class="text-left"><strong>You do not have to vote in every race.</strong>Your ballot will still be counted even if you do not vote in every race.</p>
 		<% if @ballot.organization == "s" %>
-				<div class="row">
-			  	<div class="col-xs-6 col-md-4">
-			  		<%= link_to "Back", "/", class: "btn btn-lg btn-primary" %>
-			  	</div>
-			  	</div>
+				<p class="text-left"><strong>Please read all instructions below before you begin voting.</strong>
+				<p class="text-left"><strong>To vote for the candidate of your choice</strong>, select the icon next to the candidate's name. Once you press "Next", your vote for that race will be recorded.</p>
+				<p class="text-left"><strong>If you want to change your vote or make a mistake in the race you are currently on</strong>, simply reselect the candidate you do want and continue.</p>
+				<p class="text-left"><strong>If you do not want to vote in a particular race, </strong>you may select the "No Preference" option. However, you must select one of the options before proceeding onto the next race.</p>
+				<p class="text-left"><strong>If you would like to change your vote from previous race, </strong> you may go back in your ballot by selecting the "Back" button until you reach the desired race. Once you have reached the race, simply select your new choice and click "Next". This will overwrite your previous vote for that race.</p>
+				<p class="text-left"><strong>In order to submit your ballot, </strong> you must go through all races on the ballot. The last race will have a "Submit" button, which will then submit your ballot.</p>
+				<p class="text-left"><strong>To begin voting</strong>, press the "Start Voting" button below. This will take you to the first race. There are 14 races total.</p>
+				<!-- Take user to first race -->
 			  	<div class="row">
 			  	<div class="col-xs-6 col-md-4">
 			  		<%= link_to "Start Voting", @races.first, class: "btn btn-lg btn-primary" %>
@@ -22,10 +20,17 @@
 		<% end %> 
 
 		<% if @ballot.organization == "n" %>
-		<!-- Take user to ballot.index page: Has list of all the races -->
-			<div class="row">
-		  		<%= link_to "Start Voting", "/ballot/#{@ballot.id}", class: "btn btn-lg btn-primary" %>
-		  	</div>
+				<p class="text-left"><strong>Please read all instructions below before you begin voting.</strong>
+				<p class="text-left"><strong>To begin voting</strong>, press the "Start Voting" button below. This will take you to your Main Ballot page, which will show all the possible races you can vote in.</p>
+				<p class="text-left"><strong>To vote in a particular race</strong>, simply select that race from the list of all possible choices and you will be taken to the desired race.</p>
+				<p class="text-left"><strong>To vote for the candidate of your choice</strong>, select the icon next to the candidate's name. Once you press the "Main" button, your vote for that race will be recorded and you will be redirected to the Main Ballot page, where you will be able to select another race.</p>
+				<p class="text-left">On the Main Ballot page, all races in <strong>RED</strong> indicate races you have already voted in. All races in <strong>BLUE</strong> are races you have not yet voted in.</p>
+				<p class="text-left"><strong>If you would like to change your vote from a race you have already voted in, </strong> simply select that race from the Main Ballot page and mark your new vote. Once you click "Main", you new selection will overwrite your previous selection for that race.</p>
+				<p class="text-left"><strong>Once you have voted in all the races you want to voite in,</strong> simply click the "Submit Ballot" button. A confirmation message will appear, and once you confirm that you would like to submit your ballot your votes will be recorded.</p>
+				<!-- Take user Ballot Overview Page where all the races will be listed.-->
+				<div class="row">
+			  		<%= link_to "Start Voting", "/ballot/#{@ballot.id}", class: "btn btn-lg btn-primary" %>
+			  	</div>
 
 		<% end %> 
 	</div> 

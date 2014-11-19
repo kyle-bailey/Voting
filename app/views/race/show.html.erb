@@ -9,15 +9,27 @@
 		    			<label><input type="radio" name="#{c}"><%= c.name %> <%= c.party %></br></label>
 		    		</div>	
 				<% end %>
-	  	</div>
-	  	<nav>
-		  <ul class="pager">
-		  	<% if @ballot.races.first.id != @race.id %>
-		  		<li class="previous"><%= tag("a", href:"/race/#{@race.id - 1}") %><span aria-hidden="true">&larr;</span> Previous</a></li>
-		  	<% end %>
-		    <li class="next"><%= tag("a", href:"/race/#{@race.id}/submit_vote_and_go_to_next_race") %>Next <span aria-hidden="true">&rarr;</span></a></li>
-		  </ul>
-		</nav>
+
+
+	  	<!-- If Sequential, have Previous/Next buttons to iterate through ballot --> 
+	  	<%if @ballot.organization == "s" %> 
+	  		<nav>
+			  <ul class="pager">
+			  	<% if @ballot.races.first.id != @race.id %>
+			  		<li class="previous"><%= tag("a", href:"/race/#{@race.id - 1}") %><span aria-hidden="true">&larr;</span> Previous</a></li>
+			  	<% end %>
+			    <li class="next"><%= tag("a", href:"/race/#{@race.id}/submit_vote_and_go_to_next_race") %>Next <span aria-hidden="true">&rarr;</span></a></li>
+			  </ul>
+			</nav>
+		<% end %> 
+
+		<!-- If Non-Sequential, only have one button that goes back to maiin page" --> 
+		<%if @ballot.organization == "n" %> 
+		<div class ="row center">
+			<%=link_to "Vote", "/ballot/#{@ballot.id}", class: "btn btn-lg btn-primary" %>
+		</div>
+		<% end %> 
+		</div>
 	</div>	
 </div>
 
