@@ -187,16 +187,141 @@ class BallotController < ApplicationController
 		else 
 
 			#double major
-			@race = @ballot.races.create(race_type:"Choose One", title:"What is the hardest Double-major at Rice?", ballot_id: @ballot.id)
+			@race = @ballot.races.create(race_type:"Choose One", title:"Hardest Double-major at Rice", ballot_id: @ballot.id)
 			@race.candidate.create(name: "Mechanical Engineering and Statistics", race_id: @race.id)
 			@race.candidate.create(name: "Math and Physics", race_id: @race.id)
 			@race.candidate.create(name: "English and Philosophy", race_id: @race.id)
 
-			#double major
-			@race = @ballot.races.create(race_type:"Choose One", title:"What is the easiest course distribution classification?", ballot_id: @ballot.id)
+			#easiest distro
+			@race = @ballot.races.create(race_type:"Choose One", title:"Easiest course distribution classification", ballot_id: @ballot.id)
 			@race.candidate.create(name: "I (Humanities)", race_id: @race.id)
 			@race.candidate.create(name: "II (Social Sciences)", race_id: @race.id)
 			@race.candidate.create(name: "III (Natural Sciences and Engineering)", race_id: @race.id)
+
+			#impactful org
+			@race = @ballot.races.create(race_type:"Choose One", title:"Most impactful campus organization", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Leadership Rice", race_id: @race.id)
+			@race.candidate.create(name: "Community Involvement Center", race_id: @race.id)
+
+			#advisors
+			@race = @ballot.races.create(race_type:"Choose One", title:"Most effective number of advisors per O-week group", ballot_id: @ballot.id)
+			@race.candidate.create(name: "2 Advisors", race_id: @race.id)
+			@race.candidate.create(name: "3 Advisors", race_id: @race.id)
+			@race.candidate.create(name: "4 Advisors", race_id: @race.id)
+
+			#servery
+			@race = @ballot.races.create(race_type:"Choose One", title:"Servery most in need of a new head chef", ballot_id: @ballot.id)
+			@race.candidate.create(name: "East Servery", race_id: @race.id)
+			@race.candidate.create(name: "West Servery", race_id: @race.id)
+
+			#inter college
+			@race = @ballot.races.create(race_type:"Choose One", title:"Most effective inter-college bonding event", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Public Parties", race_id: @race.id)
+			@race.candidate.create(name: "Intercollegiate picnics", race_id: @race.id)
+
+			#apparel
+			@race = @ballot.races.create(race_type:"Choose One", title:"Type of apparel Rice should provide more of", ballot_id: @ballot.id)
+			@race.candidate.create(name: "T-shirts", race_id: @race.id)
+			@race.candidate.create(name: "Hats", race_id: @race.id)
+
+			#artist
+			@race = @ballot.races.create(race_type:"Choose One", title:"Artist to perform at Rice", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Rascall Flatts", race_id: @race.id)
+			@race.candidate.create(name: "Kesha", race_id: @race.id)
+
+			#os
+			@race = @ballot.races.create(race_type:"Choose One", title:"Best Operating System", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Mac OS X", race_id: @race.id)
+			@race.candidate.create(name: "Windows 7", race_id: @race.id)
+
+			#public
+			@race = @ballot.races.create(race_type:"Choose One", title:"Best Rice Public Party", ballot_id: @ballot.id)
+			@race.candidate.create(name: "NOD", race_id: @race.id)
+			@race.candidate.create(name: "80's", race_id: @race.id)
+
+			#college
+			@race = @ballot.races.create(race_type:"Choose One", title:"College you would most want to be a member of", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Wiess", race_id: @race.id)
+			@race.candidate.create(name: "Brown", race_id: @race.id)
+
+			#fast food
+			@race = @ballot.races.create(race_type:"Choose One", title:"Best fast-food restaurant", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Subway", race_id: @race.id)
+			@race.candidate.create(name: "Chick-fil-A", race_id: @race.id)
+
+			#renovations
+			@race = @ballot.races.create(race_type:"Choose One", title:"Residential College most in need of renovations", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Hanszen College", race_id: @race.id)
+			@race.candidate.create(name: "Lovett College", race_id: @race.id)
+
+			#movie
+			@race = @ballot.races.create(race_type:"Choose One", title:"Movie to be shown in the RMC", ballot_id: @ballot.id)
+			@race.candidate.create(name: "The Lion King", race_id: @race.id)
+
+			#study space
+			@race = @ballot.races.create(race_type:"Choose One", title:"Best non-traditional study space", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Brochstein Pavilion", race_id: @race.id)
+			@race.candidate.create(name: "Residential College Commons", race_id: @race.id)
+
+			#lpaps
+			@race = @ballot.races.create(race_type:"Choose One", title:"Number of LPAPs that should be required", ballot_id: @ballot.id)
+			@race.candidate.create(name: "0 LPAPs", race_id: @race.id)
+			@race.candidate.create(name: "1 or more LPAPs", race_id: @race.id)
+
+			#bikers
+			@race = @ballot.races.create(race_type:"Choose One", title:"Number of bikers per race for Beer Bike", ballot_id: @ballot.id)
+			@race.candidate.create(name: "5-7 Bikers", race_id: @race.id)
+			@race.candidate.create(name: "8-10 Bikers", race_id: @race.id)
+
+			#rpc
+			@race = @ballot.races.create(race_type:"Choose One", title:"RPC event that should receive greater funding", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Esperanza", race_id: @race.id)
+			@race.candidate.create(name: "Willy Week", race_id: @race.id)
+
+			#sport
+			@race = @ballot.races.create(race_type:"Choose One", title:"Varsity Sport to be added at Rice", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Lacrosse", race_id: @race.id)
+			@race.candidate.create(name: "Field Hockey", race_id: @race.id)
+
+			#homecoming
+			@race = @ballot.races.create(race_type:"Choose One", title:"Preferred Homecoming Performance", ballot_id: @ballot.id)
+			@race.candidate.create(name: "Magician", race_id: @race.id)
+			@race.candidate.create(name: "Comedian", race_id: @race.id)
+
+			#student run
+			@race = @ballot.races.create(race_type:"Choose One", title:"Best Student-run business", ballot_id: @ballot.id)
+			@race.candidate.create(name: "The Hoot", race_id: @race.id)
+			@race.candidate.create(name: "Coffeehouse", race_id: @race.id)
+
+			#prop 1
+			@race = @ballot.races.create(category:"Proposition", race_type:"Y/N", title:"Proposition 1", ballot_id: @ballot.id, description:"Shall the Esther Waitlist System become a mandatory feature of all classes at Rice?")
+			@race.candidate.create(name: "Yes", race_id: @race.id)
+			@race.candidate.create(name: "No", race_id: @race.id)
+
+			#prop 2
+			@race = @ballot.races.create(category:"Proposition", race_type:"Y/N", title:"Proposition 2", ballot_id: @ballot.id, description:"Shall the GSA continue to be included in Residential College sports competitions and thus remain eligible to win the President’s Cup?")
+			@race.candidate.create(name: "Yes", race_id: @race.id)
+			@race.candidate.create(name: "No", race_id: @race.id)
+
+			#prop 3
+			@race = @ballot.races.create(category:"Proposition", race_type:"Y/N", title:"Proposition 3", ballot_id: @ballot.id, description:"Shall Rice support a proposed educational exemption of the drinking age?")
+			@race.candidate.create(name: "Yes", race_id: @race.id)
+			@race.candidate.create(name: "No", race_id: @race.id)
+
+			#prop 4
+			@race = @ballot.races.create(category:"Proposition", race_type:"Y/N", title:"Proposition 4", ballot_id: @ballot.id, description:"Shall there be an amendment to the Rice Alcohol Policy that institutes a permanent ban on hard alcohol (defined as 40 proof and above) on Rice Campus?")
+			@race.candidate.create(name: "Yes", race_id: @race.id)
+			@race.candidate.create(name: "No", race_id: @race.id)
+
+			#prop 5
+			@race = @ballot.races.create(category:"Proposition", race_type:"Y/N", title:"Proposition 5", ballot_id: @ballot.id, description:"Shall there be a twelfth residential college built to allow for increased student enrollment?")
+			@race.candidate.create(name: "Yes", race_id: @race.id)
+			@race.candidate.create(name: "No", race_id: @race.id)
+
+			#prop 6
+			@race = @ballot.races.create(category:"Proposition", race_type:"Y/N", title:"Proposition 6", ballot_id: @ballot.id, description:"Shall the first floor of library be remodeled to make it into more of a social studying space?")
+			@race.candidate.create(name: "Yes", race_id: @race.id)
+			@race.candidate.create(name: "No", race_id: @race.id)
 
 		end
 
