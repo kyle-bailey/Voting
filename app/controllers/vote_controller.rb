@@ -6,6 +6,7 @@ class VoteController < ApplicationController
 
 	def create
 		@vote = Vote.new(vote_params)
+		@vote.save()
 	end
 
 	private

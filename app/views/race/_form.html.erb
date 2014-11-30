@@ -1,0 +1,34 @@
+<%= form_for @race, url: @submit_vote, :html => {:class => "form-horizontal "} do |f| %>
+	<div class="form-group">
+  	<%= f.label @race.title,  class: "page-header"  %>
+	<% if @race.category == "proposition" %>
+		<div class="col-md-8">
+		<%= f.label @race.description %>
+		</div>
+	<% end %> 
+	</div>
+	<div class="radio-group">
+	<% @race.candidate.each do |candidate| %>
+		<%= f.fields_for "candidate[]", candidate do |builder| %>
+			<%= render "candidate", :f => builder, :c => candidate %>
+		<% end %> 
+	<% end %> 
+	</div>
+	<div class="form-group">
+	<% if @ballot.organization == 's' %>
+		<% if @ballot.races.first.id != @race.id %>
+			<%= submit_tag "Previous", :name => 'previous', :id => 'previous' %>
+		<% end %>
+		<%= f.submit "Next", :id => 'next' , class: "btn btn-lg btn-primary pull-right" %>
+	<% end %> 
+	<% if @ballot.organization == 's_expl' %>
+		<% if @ballot.races.first.id != @race.id %>
+			<%= f.submit "Previous", :name => 'previous', :id => 'previous', class: "btn btn-lg btn-primary pull-right"  %>
+		<% end %>
+		<%= f.submit "Next", :id => 'next_expl', class: "btn btn-lg btn-primary pull-right"  %>
+	<% end %> 
+	<% if @ballot.organization == 'n' %>
+		<%= f.submit "Main", :name => 'main', :id => 'next_expl', class: "btn btn-lg btn-primary pull-right" %>
+	<% end %> 
+</div>
+<% end %>

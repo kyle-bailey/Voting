@@ -1,12 +1,11 @@
 <div class"container-fluid">
 	<div class="jumbotron center">
-		<h1>Non-Sequential Ballot</h1>
+		<h1>Ballot Overview</h1>
 		<br>
 		<table class="table table-hover">
-		</table>
 		<% @ballot.races.each do |r| %>
 				<tr>
-    				<td><h3><%=link_to r.title, race_path(r)%></h3></td>
+    				<td id="race#{r}"><h3><%=link_to r.title, race_path(r)%></h3></td>
     			<tr/>
     	<% end%>
     	</table>

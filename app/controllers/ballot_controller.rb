@@ -17,7 +17,7 @@ class BallotController < ApplicationController
 		elsif t == 1
 			@ballot.organization = "s" #sequential
 		elsif t == 2
-			@ballot.organization = "n_exp" #non_sequentail (explicit no-preference)
+			@ballot.organization = "s_exp" #sequential (explicit no-preference)
 		end
 
 		theme = rand(2)
@@ -39,6 +39,7 @@ class BallotController < ApplicationController
 	def instructions
 		@ballot = Ballot.find(params[:id])
 		@races = @ballot.races
+		@ballot.instructions = "Instructions"
 	end
 
 	def create_races
@@ -49,9 +50,9 @@ class BallotController < ApplicationController
 
 			#president/vice
 			@race = @ballot.races.create(category:"President and Vice President", race_type:"Choose One", title:"President and Vice President", ballot_id: @ballot.id)
-			@race.candidate.create(name: "Gordon Bearce, Nathan Maclean", party: "REP", race_id: @race.id)
-			@race.candidate.create(name: "Vernon Stanley Albury, Richard Rigby", party: "DEM", race_id: @race.id)
-			@race.candidate.create(name: "Janette Froman, Chris Aponte", party: "LIB", race_id: @race.id)
+			@race.candidate.create(name: "Gordon Bearce, Nathan Maclean", party: "REP", race_id: @race.id, selected: false)
+			@race.candidate.create(name: "Vernon Stanley Albury, Richard Rigby", party: "DEM", race_id: @race.id, selected: false)
+			@race.candidate.create(name: "Janette Froman, Chris Aponte", party: "LIB", race_id: @race.id, selected: false)
 
 			#senator
 			@race = @ballot.races.create(category:"Congressional", race_type:"Choose One", title:"United States Senator", ballot_id: @ballot.id)
@@ -188,15 +189,15 @@ class BallotController < ApplicationController
 
 			#double major
 			@race = @ballot.races.create(race_type:"Choose One", title:"What is the hardest Double-major at Rice?", ballot_id: @ballot.id)
-			@race.candidate.create(name: "Mechanical Engineering and Statistics", race_id: @race.id)
-			@race.candidate.create(name: "Math and Physics", race_id: @race.id)
-			@race.candidate.create(name: "English and Philosophy", race_id: @race.id)
+			@race.candidate.create(name: "Mechanical Engineering and Statistics", race_id: @race.id, selected: false)
+			@race.candidate.create(name: "Math and Physics", race_id: @race.id, selected: false)
+			@race.candidate.create(name: "English and Philosophy", race_id: @race.id, selected: false)
 
 			#double major
 			@race = @ballot.races.create(race_type:"Choose One", title:"What is the easiest course distribution classification?", ballot_id: @ballot.id)
-			@race.candidate.create(name: "I (Humanities)", race_id: @race.id)
-			@race.candidate.create(name: "II (Social Sciences)", race_id: @race.id)
-			@race.candidate.create(name: "III (Natural Sciences and Engineering)", race_id: @race.id)
+			@race.candidate.create(name: "I (Humanities)", race_id: @race.id, selected: false)
+			@race.candidate.create(name: "II (Social Sciences)", race_id: @race.id, selected: false)
+			@race.candidate.create(name: "III (Natural Sciences and Engineering)", race_id: @race.id, selected: false)
 
 		end
 

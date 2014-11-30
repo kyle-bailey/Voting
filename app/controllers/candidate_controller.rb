@@ -10,6 +10,6 @@ class CandidateController < ApplicationController
 
 	private
 	def candidate_params
-		params.require(:candidate).permit(:name, :party, :race_id)
+		params.require(:candidate).permit(:name, :party, :race_id, :selected)
 	end
 end

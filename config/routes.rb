@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   end
   resources :race do
     member do
-      get 'submit_vote_and_go_to_next_race'
-      put 'submit_vote_and_return'
+      # get 'submit_vote_and_go_to_next_race'
+      # get 'submit_vote_and_return'
+      post 'submit_vote'
     end
   end
   resources :vote 
