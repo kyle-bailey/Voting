@@ -188,19 +188,7 @@ class BallotController < ApplicationController
 
 		else 
 
-			#double major
-<<<<<<< HEAD
-			@race = @ballot.races.create(race_type:"Choose One", title:"What is the hardest Double-major at Rice?", ballot_id: @ballot.id)
-			@race.candidate.create(name: "Mechanical Engineering and Statistics", race_id: @race.id, selected: false)
-			@race.candidate.create(name: "Math and Physics", race_id: @race.id, selected: false)
-			@race.candidate.create(name: "English and Philosophy", race_id: @race.id, selected: false)
-
-			#double major
-			@race = @ballot.races.create(race_type:"Choose One", title:"What is the easiest course distribution classification?", ballot_id: @ballot.id)
-			@race.candidate.create(name: "I (Humanities)", race_id: @race.id, selected: false)
-			@race.candidate.create(name: "II (Social Sciences)", race_id: @race.id, selected: false)
-			@race.candidate.create(name: "III (Natural Sciences and Engineering)", race_id: @race.id, selected: false)
-=======
+			#easiest distro
 			@race = @ballot.races.create(race_type:"Choose One", title:"Hardest Double-major at Rice", ballot_id: @ballot.id)
 			@race.candidate.create(name: "Mechanical Engineering and Statistics", race_id: @race.id)
 			@race.candidate.create(name: "Math and Physics", race_id: @race.id)
@@ -211,7 +199,7 @@ class BallotController < ApplicationController
 			@race.candidate.create(name: "I (Humanities)", race_id: @race.id)
 			@race.candidate.create(name: "II (Social Sciences)", race_id: @race.id)
 			@race.candidate.create(name: "III (Natural Sciences and Engineering)", race_id: @race.id)
->>>>>>> cfcae6d33a8c5b1561d5b41f8339b85e9b9aebdf
+
 
 			#impactful org
 			@race = @ballot.races.create(race_type:"Choose One", title:"Most impactful campus organization", ballot_id: @ballot.id)
