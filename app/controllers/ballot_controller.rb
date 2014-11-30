@@ -17,7 +17,7 @@ class BallotController < ApplicationController
 		elsif t == 1
 			@ballot.organization = "s" #sequential
 		elsif t == 2
-			@ballot.organization = "n_exp" #non_sequentail (explicit no-preference)
+			@ballot.organization = "s_exp" #sequentail (explicit no-preference)
 		end
 
 		theme = rand(2)
