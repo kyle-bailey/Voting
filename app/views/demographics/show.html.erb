@@ -9,7 +9,7 @@
 	<%= f.label "Do you have normal or corrected to normal vision?" %><br />
   <%= f.radio_button(:normal_vision, "yes") %> <%= f.label "yes" %><br />
 	<%= f.radio_button(:normal_vision, "no") %> <%= f.label "no" %><br />
-	<p>If you answered no, please describe your Snellen visual acuity (ex. 20/200) and the degree of your visual field.</p><br />
+	<p><b>If you answered no, please describe your Snellen visual acuity (ex. 20/200) and the degree of your visual field.</b></p>
 	<%= f.label :visual_acuity %>:
 	<%= f.text_field :visual_acuity %><br />
 	<%= f.label :visual_field %>:
@@ -45,11 +45,41 @@
 	<%= f.label "In which state(s) and county(s) have you voted in a national election?"  %>:
   <%= f.text_field :where_voted %><br /><br />
 
-  <%= f.label "How many other elections of any type (local, school board, etc.) have you voted in?"  %>:
+  <b>How many other elections of any type local, school board, etc. have you voted in?:</b>
   <%= f.text_field :other_elections %><br /><br />
 
   <%= f.label "In which state(s) and county(s) have you voted in other types of elections?"  %>:
   <%= f.text_field :where_other %><br /><br />
+
+  <%= f.label "Do you typically cast your vote on an absentee ballot?" %><br />
+  <%= f.radio_button(:absentee, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:absentee, "no") %> <%= f.label "no" %><br /><br />
+
+	<%= f.label "Have you ever felt worried about figuring out how to use the ballot or technology to cast your vote? " %><br />
+  <%= f.radio_button(:worried, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:worried, "no") %> <%= f.label "no" %><br /><br />
+
+	<%= f.label "Have you ever felt that time pressure caused you to rush, make a mistake, or leave a choice blank when you would not otherwise have done so?" %><br />
+  <%= f.radio_button(:time_pressure, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:time_pressure, "no") %> <%= f.label "no" %><br /><br />
+
+	<%= f.label "If you have felt time pressure, did this prevent you from voting? " %><br />
+  <%= f.radio_button(:prevent, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:prevent, "no") %> <%= f.label "no" %><br /><br />
+
+	<%= f.label "Do you typically vote a straight-party ticket?" %><br />
+  <%= f.radio_button(:straight_party, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:straight_party, "no") %> <%= f.label "no" %><br /><br />
+
+	<%= f.label "Do you typically cast a vote for every office on the ballot?" %><br />
+  <%= f.radio_button(:every_office, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:every_office, "no") %> <%= f.label "no" %><br /><br />
+
+	<%= f.label "When you voted in an election, have you ever been unsure if your vote was cast correctly or would be counted? " %><br />
+  <%= f.radio_button(:unsure, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:unsure, "no") %> <%= f.label "no" %><br /><br />
+	<%= f.label "If yes, please describe the situation:" %>
+	<%= f.text_field :unsure_explanation %><br /><br />
 
   <%= f.submit %>
 <% end %>

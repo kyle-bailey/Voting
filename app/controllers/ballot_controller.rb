@@ -11,7 +11,7 @@ class BallotController < ApplicationController
 
 	def new
 		@ballot = Ballot.create()
-		t = rand(2);
+		t = rand(3);
 		if t == 0
 			@ballot.organization = "n" #non-sequential
 		elsif t == 1
@@ -23,9 +23,9 @@ class BallotController < ApplicationController
 
 		theme = rand(2)
 		if theme == 0
-			@ballot.theme == "rice"
+			@ballot.theme = "rice"
 		else
-			@ballot.theme == "political"
+			@ballot.theme = "political"
 		end
 
 		@ballot.save
@@ -337,7 +337,7 @@ class BallotController < ApplicationController
 
 	private
 	def ballot_params
-		params.require(:ballot).permit(:organization)
+		params.require(:ballot).permit(:organization, :theme)
 	end
 
 end
