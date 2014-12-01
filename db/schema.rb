@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129175404) do
+ActiveRecord::Schema.define(version: 20141201070214) do
 
   create_table "ballots", force: true do |t|
     t.string   "organization"
@@ -30,6 +30,27 @@ ActiveRecord::Schema.define(version: 20141129175404) do
     t.integer  "race_id"
     t.string   "party"
     t.boolean  "selected"
+  end
+
+  create_table "demographics", force: true do |t|
+    t.integer  "age"
+    t.string   "gender"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "normal_vision"
+    t.integer  "ballot_id"
+    t.string   "visual_acuity"
+    t.string   "visual_field"
+    t.string   "reading_disability"
+    t.string   "hearing_impairment"
+    t.string   "native_english"
+    t.string   "native_language"
+    t.string   "political_affiliation"
+    t.text     "other"
+    t.string   "number_elections"
+    t.text     "where_voted"
+    t.text     "other_elections"
+    t.text     "where_other"
   end
 
   create_table "races", force: true do |t|

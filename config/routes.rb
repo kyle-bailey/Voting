@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     end
   end
   resources :vote 
+  resources :demographics 
 
 end

@@ -28,8 +28,11 @@ class BallotController < ApplicationController
 			@ballot.theme == "political"
 		end
 
-		@ballot.save()
-		redirect_to "/ballot/#{@ballot.id}/create_races"
+		@ballot.save
+		@dem = Demographics.create()
+		@dem.ballot_id = @ballot.id
+		@dem.save
+		redirect_to "/demographics/#{@dem.id}"
 	end
 
 	def create
