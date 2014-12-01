@@ -17,13 +17,13 @@
 	<div class="form-group">
 	<% if @ballot.organization == 's' %>
 		<% if @ballot.races.first.id != @race.id %>
-			<%= submit_tag "Previous", :name => 'previous', :id => 'previous' %>
+			<%= link_to "Previous", "/race/#{@race.id-1}" %>
 		<% end %>
 		<%= f.submit "Next", :id => 'next' , class: "btn btn-lg btn-primary pull-right" %>
 	<% end %> 
 	<% if @ballot.organization == 's_expl' %>
 		<% if @ballot.races.first.id != @race.id %>
-			<%= f.submit "Previous", :name => 'previous', :id => 'previous', class: "btn btn-lg btn-primary pull-right"  %>
+			<% link_to "Previous", "/race/#{@race.id-1}" %>
 		<% end %>
 		<%= f.submit "Next", :id => 'next_expl', class: "btn btn-lg btn-primary pull-right"  %>
 	<% end %> 

@@ -3,6 +3,10 @@ class RaceController < ApplicationController
 	def show
 		@race = Race.find(params[:id])
 		@ballot = Ballot.find(@race.ballot_id)
+		@selected_candidate = nil
+		if @race.vote != nil
+			@selected_candidate = Candidate.find_by_name(@race.vote.candidate)
+		end
 		# @candidate = Candidate.where(selected: true) #candidate that has been selected
 	end
 
@@ -52,6 +56,23 @@ class RaceController < ApplicationController
 	def update
 	    @race = Race.find(params[:id])
 		@ballot = Ballot.find(@race.ballot_id)
+
+		if params[:race] != nil
+			@candidate = Candidate.find_by_name(params[:race][:candidate].values[0][:selected]) #candidate selected
+			@candidate.update_attribute(:selected, true); #update candidate's selected id
+			@vote = Vote.find_by_race_id(params[:id])   # find vote by race id 
+			if (@vote)
+				#@old = Candidate.find_by_name(@vote.candidate)
+				#@old.update_attribute(:selected, false)
+				@vote.update_attribute(:candidate, @candidate.name)
+			else 
+				@vote = Vote.create();
+				@vote.race_id = params[:id]
+				@vote.candidate = @candidate.name
+				@vote.save()
+			end 
+		end
+
 		respond_to do |format| 
 			format.html {
 				if(@ballot.organization == "s")

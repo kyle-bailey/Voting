@@ -1,5 +1,9 @@
 
-  <%= f.radio_button :selected, c.name, checked: c.selected? ,:id=>c.name %>
+	<% if @selected_candidate != nil %>
+  	<%= f.radio_button :selected, c.name, checked: c.name == @selected_candidate.name ,:id=>c.name %>
+  <% else %>
+  	<%= f.radio_button :selected, c.name ,:id=>c.name %>
+  <% end %>
   <%= f.label :selected, c.name %>
   <br>
 
