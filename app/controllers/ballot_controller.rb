@@ -47,6 +47,8 @@ class BallotController < ApplicationController
 	end
 
 	def completed
+		@ballot.finished_at = Time.now
+		@ballot.save
 	end
 
 	def voters_guide
