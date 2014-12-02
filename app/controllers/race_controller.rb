@@ -82,7 +82,11 @@ class RaceController < ApplicationController
 					if(@next_race)
 						redirect_to "/race/#{@next_race.id}"
 					else
-						@ballot.organization = "s_after"
+						if @ballot.organization == "s"
+							@ballot.organization = "s_after"
+						else
+							@ballot.organization = "s_expl_after"
+						end
 						@ballot.save()
 						redirect_to "/ballot/#{@ballot.id}"
 					end

@@ -34,8 +34,9 @@
 		<%= link_to "Back", "/ballot/#{@ballot.id}" , class: "btn btn btn-primary pull-left" %>
 		<%= f.submit "Vote", :name => 'main', :id => 'next_expl', class: "btn btn btn-primary pull-right" %>
 	<% end %> 
-	<% if @ballot.organization == 's_after' %>
-		<%= f.submit "Back", :name => 'main', :id => 's_expl', class: "btn btn btn-primary pull-right" %>
+	<% if @ballot.organization == 's_after' || @ballot.organization == 's_expl_after' %>
+		<%= link_to "Back", "/ballot/#{@ballot.id}" , class: "btn btn btn-primary pull-left" %>
+		<%= f.submit "Vote", :name => 'main', :id => 'next_expl', class: "btn btn btn-primary pull-right" %>
 	<% end %> 
 	</div>
 <% end %>
