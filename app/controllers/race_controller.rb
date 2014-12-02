@@ -45,8 +45,8 @@ class RaceController < ApplicationController
 		@candidate.update_attribute(:selected, true); #update candidate's selected id  
 		@vote = Vote.find_by_race_id(params[:id])   # find vote by race id 
 		if (@vote)
-			@old = Candidate.find_by_name(@vote.candidate)
-			@old.update_attribute(:selected, false)
+			#@old = Candidate.find_by_name(@vote.candidate)
+			#@old.update_attribute(:selected, false)
 			@vote.update_attribute(:candidate, candidate)
 		else 
 			@vote = Vote.create(race.id, candidate); 
@@ -59,7 +59,9 @@ class RaceController < ApplicationController
 
 		if params[:race] != nil
 			@candidate = Candidate.find_by_name(params[:race][:candidate].values[0][:selected]) #candidate selected
-			@candidate.update_attribute(:selected, true); #update candidate's selected id
+			@candidate.update_attribute(:selected, true) #update candidate's selected id
+			@race.voted = true
+			@race.save()		  # mark race as voted 
 			@vote = Vote.find_by_race_id(params[:id])   # find vote by race id 
 			if (@vote)
 				#@old = Candidate.find_by_name(@vote.candidate)
@@ -75,7 +77,7 @@ class RaceController < ApplicationController
 
 		respond_to do |format| 
 			format.html {
-				if(@ballot.organization == "s")
+				if(@ballot.organization == "s" or @ballot.organization == "s_exp" )
 					@next_race = Race.find_by_id(params[:id].to_i + 1)
 					if(@next_race)
 						redirect_to "/race/#{@next_race.id}"
@@ -91,7 +93,7 @@ class RaceController < ApplicationController
 
 	private
 	def race_params
-		params.require(:race).permit(:title, :description, :race_type)
+		params.require(:race).permit(:title, :description, :race_type, :voted)
 	end
 
 end

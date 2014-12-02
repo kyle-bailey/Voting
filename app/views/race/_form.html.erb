@@ -1,6 +1,6 @@
 <%= form_for @race, url: @submit_vote, :html => {:class => "form-horizontal "} do |f| %>
 	<div class="form-group">
-  	<%= f.label @race.title,  class: "page-header"  %></br>
+  	<%= f.label @race.title,  class: "page-header" %></br>
 	<% if @race.category == "Proposition" %>
 		<div class="col-md-8">
 		<%= @race.description %>
@@ -14,21 +14,24 @@
 		<% end %> 
 	<% end %> 
 	</div>
+	<br>
 	<div class="form-group">
 	<% if @ballot.organization == 's' %>
 		<% if @ballot.races.first.id != @race.id %>
-			<%= link_to "Previous", "/race/#{@race.id-1}" %>
+			<%= link_to "Prev", "/race/#{@race.id-1}", class: "btn btn btn-primary pull-left" %>
 		<% end %>
-		<%= f.submit "Next", :id => 'next' , class: "btn btn-lg btn-primary pull-right" %>
+		<%= f.submit "Next", :id => 'next' , class: "btn btn btn-primary pull-right" %>
 	<% end %> 
-	<% if @ballot.organization == 's_expl' %>
+	<% if @ballot.organization == 's_exp' %>
 		<% if @ballot.races.first.id != @race.id %>
-			<% link_to "Previous", "/race/#{@race.id-1}" %>
+			<%= link_to "Prev", "/race/#{@race.id-1}", class: "btn btn btn-primary pull-left" %>
 		<% end %>
-		<%= f.submit "Next", :id => 'next_expl', class: "btn btn-lg btn-primary pull-right"  %>
+		<%= f.submit "Next", :id => 'next_expl', class: "btn btn btn-primary pull-right"  %>
 	<% end %> 
 	<% if @ballot.organization == 'n' %>
-		<%= f.submit "Main", :name => 'main', :id => 'next_expl', class: "btn btn-lg btn-primary pull-right" %>
+		<%= link_to "Back", "/ballot/#{@ballot.id}" , class: "btn btn btn-primary pull-left" %>
+		<%= f.submit "Vote", :name => 'main', :id => 'next_expl', class: "btn btn btn-primary pull-right" %>
 	<% end %> 
 </div>
 <% end %>
+

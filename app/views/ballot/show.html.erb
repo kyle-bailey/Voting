@@ -5,7 +5,11 @@
 		<table class="table table-hover">
 		<% @ballot.races.each do |r| %>
 				<tr>
-    				<td id="race#{r}"><h3><%=link_to r.title, race_path(r)%></h3></td>
+					<% if r.voted == true %> 
+						<td class="success"id="race#{r}"><h3><%=link_to r.title, race_path(r)%></h3></td>
+					<% else %>
+						<td id="race#{r}"><h3><%=link_to r.title, race_path(r)%></h3></td>
+					<% end %>		
     			<tr/>
     	<% end%>
     	</table>

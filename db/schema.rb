@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202015707) do
+ActiveRecord::Schema.define(version: 20141202153154) do
 
   create_table "ballots", force: true do |t|
     t.string   "organization"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20141202015707) do
     t.datetime "updated_at"
     t.text     "category"
     t.integer  "ballot_id"
+    t.boolean  "voted"
   end
 
   create_table "votes", force: true do |t|
