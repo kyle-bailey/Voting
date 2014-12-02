@@ -47,7 +47,16 @@ class BallotController < ApplicationController
 	end
 
 	def completed
+	end
 
+	def voters_guide
+		@ballot = Ballot.find(params[:id]) 
+		if @ballot.theme == "rice"
+			pdf_filename = File.join(Rails.root, "public/Voter's Guide.pdf")
+		else
+			pdf_filename = File.join(Rails.root, "public/x103 Voter Guide.pdf")
+		end
+		send_file(pdf_filename, :filename => "voters_guide.pdf", :disposition => 'inline', :type => "application/pdf")
 	end
 
 	def create_races

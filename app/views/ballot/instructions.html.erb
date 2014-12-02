@@ -12,8 +12,10 @@
 				<p class="text-left"><strong>In order to submit your ballot, </strong> you must go through all races on the ballot. The last race will have a "Submit" button, which will redirect you to an overview page where you can see a summary of your votes for all races.</p>
 				<p class="text-left"><strong>Once you have checked your votes in all the races</strong>, you may click the "Submit" button to officially submit your ballot.</p>
 				<p class="text-left"><strong>To begin voting</strong>, press the "Start Voting" button below. This will take you to the first race.</p>
+				<p class="text-left"><strong>To learn about the candidates and propositions</strong> simply click the "Voter's Guide" button at the bottom of the page. This will open the Voter's Guide for this election in a new tab.</p>
 				<!-- Take user to first race -->
 			  	<div class="row">
+			  		<%= link_to "Voter's Guide", "/ballot/#{@ballot.id}/voters_guide", class: "btn btn-lg btn-primary", :target => '_blank'%></br></br>
 			  		<%= link_to "Start Voting", @races.first, class: "btn btn-lg btn-primary" %>
 			  	</div>
 		<% end %> 
@@ -27,8 +29,10 @@
 				<p class="text-left"><strong>If you would like to change your vote from a race you have already voted in, </strong> simply select that race from the Main Ballot page and mark your new vote. Once you click "Vote", you new selection will overwrite your previous selection for that race.</p>
 				<p class="text-left"><strong>You do not need to vote in all the races.</strong> Only click on the ones you would like to vote for.</p>
 				<p class="text-left"><strong>Once you have voted in all the races you want to voite in,</strong> simply click the "Submit Ballot" button at the bottom of the Main Ballot page. A confirmation message will appear, and once you confirm that you would like to submit your ballot your votes will be recorded.</p>
+				<p class="text-left"><strong>To learn about the candidates and propositions</strong> simply click the "Voter's Guide" button at the bottom of the page. This will open the Voter's Guide for this election in a new tab.</p>
 				<!-- Take user Ballot Overview Page where all the races will be listed.-->
 				<div class="row">
+					<%= link_to "Voter's Guide", "/ballot/#{@ballot.id}/voters_guide", class: "btn btn-lg btn-primary", :target => '_blank' %></br></br>
 			  		<%= link_to "Start Voting", "/ballot/#{@ballot.id}", class: "btn btn-lg btn-primary" %>
 			  	</div>
 
@@ -40,9 +44,11 @@
 				<p class="text-left"><strong>If you do not want to vote in a particular race, </strong>you may select the "No Preference" option. However, you must select one of the options before proceeding to the next race.</p>
 				<p class="text-left"><strong>If you would like to change your vote from previous race, </strong> you may go back in your ballot by selecting the "Back" button until you reach the desired race. Once you have reached the race, simply select your new choice and click "Next". This will overwrite your previous vote for that race.</p>
 				<p class="text-left"><strong>In order to submit your ballot, </strong> you must go through all races on the ballot. The last race will have a "Submit" button, which will then submit your ballot. The last race will have a "Submit" button, which will redirect you to an overview page where you can see a summary of your votes for all races.</p>
+				<p class="text-left"><strong>To learn about the candidates and propositions</strong> simply click the "Voter's Guide" button at the bottom of the page. This will open the Voter's Guide for this election in a new tab.</p>
 				<p class="text-left"><strong>To begin voting</strong>, press the "Start Voting" button below. This will take you to the first race. </p>
 				<!-- Take user to first race -->
 			  	<div class="row">
+			  		<%= link_to "Voter's Guide", "/ballot/#{@ballot.id}/voters_guide", class: "btn btn-lg btn-primary", :target => '_blank' %></br></br>
 			  		<%= link_to "Start Voting", @races.first, class: "btn btn-lg btn-primary" %>
 			  	</div>
 		<% end %> 

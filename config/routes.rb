@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'create_races'
       get 'instructions'
       get 'completed'
+      get 'voters_guide'
     end
   end
   resources :race do
