@@ -1,9 +1,9 @@
 <%= form_for @race, url: @submit_vote, :html => {:class => "form-horizontal "} do |f| %>
 	<div class="form-group">
-  	<%= f.label @race.title,  class: "page-header"  %>
-	<% if @race.category == "proposition" %>
+  	<%= f.label @race.title,  class: "page-header"  %></br>
+	<% if @race.category == "Proposition" %>
 		<div class="col-md-8">
-		<%= f.label @race.description %>
+		<%= @race.description %>
 		</div>
 	<% end %> 
 	</div>

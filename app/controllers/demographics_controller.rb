@@ -21,7 +21,7 @@ class DemographicsController < ApplicationController
 
 	private
 	def demographics_params
-		params.require(:demographics).permit(:age, :gender, :normal_vision, :visual_acutiy, :visual_field, :reading_disability, :hearing_impairment, :native_english, :native_language, :political_affiliation, :other, :number_elections, :where_voted, :other_elections, :where_other, :absentee, :worried, :time_pressure, :prevent, :straight_party, :every_office, :unsure, :unsure_explanation)
+		params.require(:demographics).permit(:age, :gender, :normal_vision, :visual_acutiy, :visual_field, :reading_disability, :hearing_impairment, :native_english, :native_language, :political_affiliation, :other, :number_elections, :where_voted, :other_elections, :where_other, :absentee, :worried, :time_pressure, :prevent, :straight_party, :every_office, :unsure, :unsure_explanation, :how_satisfied, :race, :race_specification)
 	end
 
 end

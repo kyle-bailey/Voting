@@ -81,5 +81,18 @@
 	<%= f.label "If yes, please describe the situation:" %>
 	<%= f.text_field :unsure_explanation %><br /><br />
 
+	<%= f.label "On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your past voting experiences overall?" %><br />
+	<%= f.text_field :how_satisfied %><br /><br />
+
+	<%= f.label "Are you:" %><br />
+	<%= f.radio_button(:race, "African American") %> <%= f.label "African American" %><br />
+  <%= f.radio_button(:race, "American Indian ") %> <%= f.label "American Indian " %><br />
+  <%= f.radio_button(:race, "Asian American") %> <%= f.label "Asian American" %><br />
+  <%= f.radio_button(:race, "Caucasian") %> <%= f.label "Caucasian" %><br />
+  <%= f.radio_button(:race, "ther Hispanic or Latino") %> <%= f.label "ther Hispanic or Latino" %><br />
+  <%= f.radio_button(:race, "Multiracial") %> <%= f.label "Multiracial" %><br />
+  <%= f.radio_button(:race, "Other") %> <%= f.label "Other (please specify)" %><%= f.text_field :race_specification %><br /><br />
+	
+
   <%= f.submit %>
 <% end %>
