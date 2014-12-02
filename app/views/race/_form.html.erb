@@ -1,21 +1,23 @@
-<%= form_for @race, url: @submit_vote, :html => {:class => "form-horizontal "} do |f| %>
-	<div class="form-group">
-  	<%= f.label @race.title,  class: "page-header" %></br>
-	<% if @race.category == "Proposition" %>
-		<div class="col-md-8">
-		<%= @race.description %>
-		</div>
+
+<%= form_for @race, url: @submit_vote, html: { class: "panel panel-default" } do |f| %>
+	<div class="panel-heading">
+		<div class="panel-title">
+  			<h4><%= f.label @race.title%></br></h4>
+  		</div>
+  	</div>
+  	<div class="panel-body">
+	<% if @race.category == "Proposition" %>	
+			<p><%= @race.description %></p>
 	<% end %> 
-	</div>
-	<div class="radio-group">
+
+	<ul class="list-group ">
 	<% @race.candidate.each do |candidate| %>
 		<%= f.fields_for "candidate[]", candidate do |builder| %>
 			<%= render "candidate", :f => builder, :c => candidate %>
 		<% end %> 
 	<% end %> 
-	</div>
-	<br>
-	<div class="form-group">
+	</ul>
+
 	<% if @ballot.organization == 's' %>
 		<% if @ballot.races.first.id != @race.id %>
 			<%= link_to "Prev", "/race/#{@race.id-1}", class: "btn btn btn-primary pull-left" %>
@@ -32,6 +34,6 @@
 		<%= link_to "Back", "/ballot/#{@ballot.id}" , class: "btn btn btn-primary pull-left" %>
 		<%= f.submit "Vote", :name => 'main', :id => 'next_expl', class: "btn btn btn-primary pull-right" %>
 	<% end %> 
-</div>
+	</div>
 <% end %>
 

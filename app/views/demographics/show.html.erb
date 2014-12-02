@@ -1,98 +1,143 @@
-<%= form_for @dem do |f| %>
-  <%= f.label :age %>:
-  <%= f.text_field :age %><br /><br />
-
-  <%= f.label :gender %>:<br />
+<%= form_for @dem, :html => {:class => "form-horizontal"}  do |f| %>
+<div class="form-group">
+  <h4><%= f.label :age %>:</h4>
+  <%= f.text_field :age , class: "form-control"%>
+</div>
+<div class="form-group">
+  <h4><%= f.label :gender %>:<br/></h4>
   <%= f.radio_button(:gender, "male") %> <%= f.label "male" %><br />
-	<%= f.radio_button(:gender, "female") %> <%= f.label "female" %><br /><br />
+	<%= f.radio_button(:gender, "female") %> <%= f.label "female" %><br />
+</div>
 
-	<%= f.label "Do you have normal or corrected to normal vision?" %><br />
-  <%= f.radio_button(:normal_vision, "yes") %> <%= f.label "yes" %><br />
+<div class="form-group">
+	<h4><%= f.label "Do you have normal or corrected to normal vision?" %><br /></h4>
+  	<%= f.radio_button(:normal_vision, "yes") %> <%= f.label "yes" %><br />
 	<%= f.radio_button(:normal_vision, "no") %> <%= f.label "no" %><br />
+</div>
+
+<div class="form-group">
 	<p><b>If you answered no, please describe your Snellen visual acuity (ex. 20/200) and the degree of your visual field.</b></p>
 	<%= f.label :visual_acuity %>:
-	<%= f.text_field :visual_acuity %><br />
+	<%= f.text_field :visual_acuity, class: "form-control" %><br />
 	<%= f.label :visual_field %>:
-	<%= f.text_field :visual_field %><br /><br />
+	<%= f.text_field :visual_field , class: "form-control"%><br />
+</div>
 
-	<%= f.label "Do you consider yourself to have a reading disability?" %><br />
-  <%= f.radio_button(:reading_disability, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:reading_disability, "no") %> <%= f.label "no" %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "Do you consider yourself to have a reading disability?" %><br /></h4>
+  	<%= f.radio_button(:reading_disability, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:reading_disability, "no") %> <%= f.label "no" %><br />
+</div>
 
-	<%= f.label "Do you have a hearing impairment?" %><br />
-  <%= f.radio_button(:hearing_impairment, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:hearing_impairment, "no") %> <%= f.label "no" %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "Do you have a hearing impairment?" %><br /></h4>
+  	<%= f.radio_button(:hearing_impairment, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:hearing_impairment, "no") %> <%= f.label "no" %><br />
+</div>
 
-	<%= f.label "Are you a native English speaker?" %><br />
-  <%= f.radio_button(:native_english, "yes") %> <%= f.label "yes" %><br />
+<div class="form-group">
+	<h4><%= f.label "Are you a native English speaker?" %><br /></h4>
+ 	<%= f.radio_button(:native_english, "yes") %> <%= f.label "yes" %><br />
 	<%= f.radio_button(:native_english, "no") %> <%= f.label "no" %><br />
-	<%= f.label "If no, what is your native language?" %><br />
-	<%= f.text_field :native_language %><br /><br />
+</div>
 
-	<%= f.label "What is your political affiliation?" %><br />
-  <%= f.radio_button(:political_affiliation, "Republican") %> <%= f.label "Republican" %><br />
-  <%= f.radio_button(:political_affiliation, "Democrat") %> <%= f.label "Democrat" %><br />
-  <%= f.radio_button(:political_affiliation, "Libertarian") %> <%= f.label "Libertarian" %><br />
-  <%= f.radio_button(:political_affiliation, "Independent") %> <%= f.label "Independent" %><br />
-	<%= f.radio_button(:political_affiliation, "Other") %> <%= f.label "Other, please specify:" %><%= f.text_field :other %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "If no, what is your native language?" %><br /></h4>
+	<%= f.text_field :native_language , class: "form-control"%><br />
+</div>
 
-	<%= f.label "How many national elections have you voted in? " %><br />
-  <%= f.radio_button(:number_elections, "None") %> <%= f.label "None" %><br />
-  <%= f.radio_button(:number_elections, "1 to 8") %> <%= f.label "1 to 8" %><br />
-  <%= f.radio_button(:number_elections, "9 to 15") %> <%= f.label "9 to 15" %><br />
-	<%= f.radio_button(:number_elections, "15 or more") %> <%= f.label "15 or more" %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "What is your political affiliation?" %><br /></h4>
+  	<%= f.radio_button(:political_affiliation, "Republican") %> <%= f.label "Republican" %><br />
+  	<%= f.radio_button(:political_affiliation, "Democrat") %> <%= f.label "Democrat" %><br />
+  	<%= f.radio_button(:political_affiliation, "Libertarian") %> <%= f.label "Libertarian" %><br />
+  	<%= f.radio_button(:political_affiliation, "Independent") %> <%= f.label "Independent" %><br />
+	<%= f.radio_button(:political_affiliation, "Other") %> <%= f.label "Other, please specify:" %><%= f.text_field :other , class: "form-control" %><br />
+</div>
 
-	<%= f.label "In which state(s) and county(s) have you voted in a national election?"  %>:
-  <%= f.text_field :where_voted %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "How many national elections have you voted in? " %><br /></h4>
+  	<%= f.radio_button(:number_elections, "None") %> <%= f.label "None" %><br />
+  	<%= f.radio_button(:number_elections, "1 to 8") %> <%= f.label "1 to 8" %><br />
+  	<%= f.radio_button(:number_elections, "9 to 15") %> <%= f.label "9 to 15" %><br />
+	<%= f.radio_button(:number_elections, "15 or more") %> <%= f.label "15 or more" %><br />
+</div>
 
-  <b>How many other elections of any type local, school board, etc. have you voted in?:</b>
-  <%= f.text_field :other_elections %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "In which state(s) and county(s) have you voted in a national election?"%></h4>
+  	<%= f.text_field :where_voted, class: "form-control" %><br />
+</div>
 
-  <%= f.label "In which state(s) and county(s) have you voted in other types of elections?"  %>:
-  <%= f.text_field :where_other %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "How many other elections of any type local, school board, etc have you voted in?"%></h4>
+  	<%= f.text_field :other_elections, class: "form-control"  %><br />
+</div>
 
-  <%= f.label "Do you typically cast your vote on an absentee ballot?" %><br />
-  <%= f.radio_button(:absentee, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:absentee, "no") %> <%= f.label "no" %><br /><br />
+<div class="form-group">
+  	<h4><%= f.label "In which state(s) and county(s) have you voted in other types of elections?"  %></h4>
+  	<%= f.text_field :where_other, class: "form-control"  %><br />
+</div>
 
-	<%= f.label "Have you ever felt worried about figuring out how to use the ballot or technology to cast your vote? " %><br />
-  <%= f.radio_button(:worried, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:worried, "no") %> <%= f.label "no" %><br /><br />
+<div class="form-group">
+  	<h4><%= f.label "Do you typically cast your vote on an absentee ballot?" %><br /></h4>
+  	<%= f.radio_button(:absentee, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:absentee, "no") %> <%= f.label "no" %><br />
+</div>
 
-	<%= f.label "Have you ever felt that time pressure caused you to rush, make a mistake, or leave a choice blank when you would not otherwise have done so?" %><br />
-  <%= f.radio_button(:time_pressure, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:time_pressure, "no") %> <%= f.label "no" %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "Have you ever felt worried about figuring out how to use the ballot or technology to cast your vote? " %><br /></h4>
+  	<%= f.radio_button(:worried, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:worried, "no") %> <%= f.label "no" %><br />
+</div>
 
-	<%= f.label "If you have felt time pressure, did this prevent you from voting? " %><br />
-  <%= f.radio_button(:prevent, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:prevent, "no") %> <%= f.label "no" %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "Have you ever felt that time pressure caused you to rush, make a mistake, or leave a choice blank when you would not otherwise have done so?" %><br/></h4>
+  	<%= f.radio_button(:time_pressure, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:time_pressure, "no") %> <%= f.label "no" %><br />
+</div>
 
-	<%= f.label "Do you typically vote a straight-party ticket?" %><br />
-  <%= f.radio_button(:straight_party, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:straight_party, "no") %> <%= f.label "no" %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "If you have felt time pressure, did this prevent you from voting? " %><br /></h4>
+  	<%= f.radio_button(:prevent, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:prevent, "no") %> <%= f.label "no" %><br />
+</div>
 
-	<%= f.label "Do you typically cast a vote for every office on the ballot?" %><br />
-  <%= f.radio_button(:every_office, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:every_office, "no") %> <%= f.label "no" %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "Do you typically vote a straight-party ticket?" %><br /></h4>
+  	<%= f.radio_button(:straight_party, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:straight_party, "no") %> <%= f.label "no" %><br />
+</div>
 
-	<%= f.label "When you voted in an election, have you ever been unsure if your vote was cast correctly or would be counted? " %><br />
-  <%= f.radio_button(:unsure, "yes") %> <%= f.label "yes" %><br />
-	<%= f.radio_button(:unsure, "no") %> <%= f.label "no" %><br /><br />
-	<%= f.label "If yes, please describe the situation:" %>
-	<%= f.text_field :unsure_explanation %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "Do you typically cast a vote for every office on the ballot?" %><br /></h4>
+  	<%= f.radio_button(:every_office, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:every_office, "no") %> <%= f.label "no" %><br />
+</div>
 
-	<%= f.label "On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your past voting experiences overall?" %><br />
-	<%= f.text_field :how_satisfied %><br /><br />
+<div class="form-group">
+	<h4><%= f.label "When you voted in an election, have you ever been unsure if your vote was cast correctly or would be counted? " %><br /></h4>
+  	<%= f.radio_button(:unsure, "yes") %> <%= f.label "yes" %><br />
+	<%= f.radio_button(:unsure, "no") %> <%= f.label "no" %><br /></br>
+</div>
+<div class="form-group">
+	<h4><%= f.label "If yes, please describe the situation:" %></h4>
+	<%= f.text_field :unsure_explanation , class: "form-control" %><br />
+</div>
+<div class="form-group">
+	<h4><%= f.label "On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your past voting experiences overall?" %><br /></h4>
+	<%= f.text_field :how_satisfied , class: "form-control" %><br />
+</div>
 
-	<%= f.label "Are you:" %><br />
+<div class="form-group">
+	<h4><%= f.label "Are you:" %><br /></h4>
 	<%= f.radio_button(:race, "African American") %> <%= f.label "African American" %><br />
-  <%= f.radio_button(:race, "American Indian ") %> <%= f.label "American Indian " %><br />
-  <%= f.radio_button(:race, "Asian American") %> <%= f.label "Asian American" %><br />
-  <%= f.radio_button(:race, "Caucasian") %> <%= f.label "Caucasian" %><br />
-  <%= f.radio_button(:race, "ther Hispanic or Latino") %> <%= f.label "ther Hispanic or Latino" %><br />
-  <%= f.radio_button(:race, "Multiracial") %> <%= f.label "Multiracial" %><br />
-  <%= f.radio_button(:race, "Other") %> <%= f.label "Other (please specify)" %><%= f.text_field :race_specification %><br /><br />
-	
+  	<%= f.radio_button(:race, "American Indian ") %> <%= f.label "American Indian " %><br />
+  	<%= f.radio_button(:race, "Asian American") %> <%= f.label "Asian American" %><br />
+  	<%= f.radio_button(:race, "Caucasian") %> <%= f.label "Caucasian" %><br />
+  	<%= f.radio_button(:race, "ther Hispanic or Latino") %> <%= f.label "ther Hispanic or Latino" %><br />
+  	<%= f.radio_button(:race, "Multiracial") %> <%= f.label "Multiracial" %><br />
+  	<%= f.radio_button(:race, "Other") %> <%= f.label "Other (please specify)" %><%= f.text_field :race_specification, class: "form-control"  %><br />
+</div>
 
-  <%= f.submit %>
+  <%= f.submit "Submit" , :name => 'submit_demo', :id => 'demo', class: "btn btn-lg btn-primary"  %>
 <% end %>

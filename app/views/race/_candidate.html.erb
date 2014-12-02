@@ -1,13 +1,17 @@
-<div class="radio">
+
+<li class="list-group-item">
 	<% if @selected_candidate != nil %>
+
   	<%= f.radio_button :selected, c.name, checked: c.name == @selected_candidate.name ,:id=>c.name, :name => "candidate" %>
   <% else %>
-  	<%= f.radio_button :selected, c.name ,:id=>c.name, :name=> "candidate" %>
+  	<%= f.radio_button :selected, c.name ,:id=>c.name, :name=> "candidate"%>
   <% end %>
-  <%= f.label :selected, c.name%>
+  <%= f.label :selected, c.name, :for => c.name %>
   <% if c.party != nil %>
-  	<%= f.label :selected, "("+ c.party + ")"%>
+  	<%= f.label :selected, "("+ c.party + ")", :for => c.name%>
   <% end %>
-  <br>
-</div>
+</li>
+  <br/>
+  <br/>
+
 
