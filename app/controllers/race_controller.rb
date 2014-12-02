@@ -57,8 +57,8 @@ class RaceController < ApplicationController
 	    @race = Race.find(params[:id])
 		@ballot = Ballot.find(@race.ballot_id)
 
-		if params[:race] != nil
-			@candidate = Candidate.find_by_name(params[:race][:candidate].values[0][:selected]) #candidate selected
+		if params[:candidate] != nil
+			@candidate = Candidate.find_by_name(params[:candidate]) #candidate selected
 			@candidate.update_attribute(:selected, true) #update candidate's selected id
 			@race.voted = true
 			@race.save()		  # mark race as voted 
