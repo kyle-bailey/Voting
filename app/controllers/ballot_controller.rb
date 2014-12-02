@@ -6,7 +6,7 @@ class BallotController < ApplicationController
 
 	def show
 		@ballot = Ballot.find(params[:id])
-		@races = @ballot.races.order(created_at: :desc)
+		@races = @ballot.races.order(:created_at)
 	end
 
 	def new
