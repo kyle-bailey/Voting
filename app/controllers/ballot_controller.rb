@@ -46,6 +46,10 @@ class BallotController < ApplicationController
 		@ballot.instructions = "Instructions"
 	end
 
+	def completed
+
+	end
+
 	def create_races
 		#create all the races for this ballot
 		@ballot = Ballot.find(params[:id])

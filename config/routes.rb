@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       get 'create_races'
       get 'instructions'
+      get 'completed'
     end
   end
   resources :race do
