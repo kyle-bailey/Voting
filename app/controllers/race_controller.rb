@@ -4,8 +4,9 @@ class RaceController < ApplicationController
 		@race = Race.find(params[:id])
 		@ballot = Ballot.find(@race.ballot_id)
 		@selected_candidate = nil
+		@candidates = @race.candidate
 		if @race.vote != nil
-			@selected_candidate = Candidate.find_by_name(@race.vote.candidate)
+			@selected_candidate = @candidates.find_by_name(@race.vote.candidate)
 		end
 		# @candidate = Candidate.where(selected: true) #candidate that has been selected
 	end
@@ -56,9 +57,10 @@ class RaceController < ApplicationController
 	def update
 	    @race = Race.find(params[:id])
 		@ballot = Ballot.find(@race.ballot_id)
+		@candidates = @race.candidate
 
 		if params[:candidate] != nil
-			@candidate = Candidate.find_by_name(params[:candidate]) #candidate selected
+			@candidate = @candidates.find_by_name(params[:candidate]) #candidate selected
 			@candidate.update_attribute(:selected, true) #update candidate's selected id
 			@race.voted = true
 			@race.save()		  # mark race as voted 
@@ -79,7 +81,7 @@ class RaceController < ApplicationController
 			format.html {
 				if(@ballot.organization == "s" or @ballot.organization == "s_exp" )
 					@next_race = Race.find_by_id(params[:id].to_i + 1)
-					if(@next_race)
+					if(@next_race && @next_race.ballot_id == @ballot.id)
 						redirect_to "/race/#{@next_race.id}"
 					else
 						if @ballot.organization == "s"
@@ -87,7 +89,7 @@ class RaceController < ApplicationController
 						else
 							@ballot.organization = "s_expl_after"
 						end
-						@ballot.save()
+						@ballot.save
 						redirect_to "/ballot/#{@ballot.id}"
 					end
 				else 

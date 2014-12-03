@@ -48,7 +48,7 @@ class BallotController < ApplicationController
 	def completed
 		@ballot = Ballot.find(params[:id])
 		@ballot.finished_at = Time.now
-		@ballot.save()
+		@ballot.save
 	end
 
 	def voters_guide
