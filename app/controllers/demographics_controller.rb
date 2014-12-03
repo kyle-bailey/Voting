@@ -13,7 +13,7 @@ class DemographicsController < ApplicationController
 		@dem = Demographics.find(params[:id])
 		@ballot = Ballot.find(@dem.ballot_id)
 		if @dem.update_attributes(demographics_params)
-			redirect_to "/ballot/#{@ballot.id}/create_races"
+			redirect_to "/ballot/#{@ballot.id}/instructions"
 		else
 			#handle failure
 		end

@@ -31,7 +31,7 @@ class BallotController < ApplicationController
 		@dem = Demographics.create()
 		@dem.ballot_id = @ballot.id
 		@dem.save
-		redirect_to "/demographics/#{@dem.id}"
+		redirect_to "/ballot/#{@ballot.id}/create_races"
 	end
 
 	def create
@@ -64,6 +64,7 @@ class BallotController < ApplicationController
 	def create_races
 		#create all the races for this ballot
 		@ballot = Ballot.find(params[:id])
+		@dem = @ballot.demographics
 
 		if @ballot.theme == "political" and @ballot.organization == "s_exp"
 			
@@ -676,7 +677,7 @@ class BallotController < ApplicationController
 			@race.candidate.create(name: "No", race_id: @race.id)
 		end
 
-		redirect_to "/ballot/#{@ballot.id}/instructions"
+		redirect_to "/demographics/#{@dem.id}"
 
 	end
 
