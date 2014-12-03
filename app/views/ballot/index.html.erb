@@ -1,0 +1,22 @@
+<% @ballots.each do |ballot| %>
+	<%= ballot.id %>
+	<%= ballot.theme %>
+	<%= ballot.organization %>
+	<%= ballot.finished_at %>
+	<% @races = ballot.races %>
+	<% count = 0 %>
+	<% no_preference = 0 %>
+	<% @races.each do |r| %>
+		<% if r.vote != nil %>
+			<% count = count + 1 %>
+			<% if r.vote.candidate == "No Preference"%>
+				<% no_preference = no_preference + 1 %>
+			<% end %>
+		<% end %>
+	<% end %>
+	</br>Voted in: <%= count %>/<%= @races.count %> races</br>
+	<% if ballot.organization == "s_expl_after" %>
+		Voted "No Preference" <%= no_preference %> times</br>
+	<% end %>
+	</br>
+<% end %>
