@@ -64,16 +64,15 @@
 
 <p><b>Non Sequential Data:</b></p>
 <p>Number of Voters: <%= non_seq_total_voters %></p>
-<p>Total votes: <%= non_seq_total_votes %></p>
-<p>Average # of votes: <%= non_seq_total_votes / (non_seq_total_voters * 27.0) %></p>
+<p>Average # of votes: <%= non_seq_total_votes / non_seq_total_voters.to_f %></p>
 <p>Average duration: <%= non_seq_total_duration / non_seq_total_voters %></p></br>
 
 <p><b>Sequential Explicit Data:</b></p>
 <p>Number of Voters: <%= seq_exp_total_voters %></p>
-<p>Average # of votes: <%= seq_exp_total_votes / (seq_exp_total_voters * 27.0) %></p>
+<p>Average # of votes: <%= seq_exp_total_votes / seq_exp_total_voters.to_f %></p>
 <p>Average duration: <%= seq_exp_total_duration / seq_exp_total_voters %></p></br>
 
 <p><b>Sequential Data:</b></p>
 <p>Number of Voters: <%= seq_total_voters %></p>
-<p>Average # of votes: <%= seq_total_votes / (seq_total_voters * 27.0) %></p>
+<p>Average # of votes: <%= seq_total_votes / seq_total_voters.to_f %></p>
 <p>Average duration: <%= seq_total_duration / seq_total_voters %></p>
