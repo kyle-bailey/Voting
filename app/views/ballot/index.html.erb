@@ -59,7 +59,7 @@
 	<% if ballot.finished_at != nil %>
 		<%= distance_of_time_in_words(ballot.created_at, ballot.finished_at) %>
 	<% end %>
-	<% @races = ballot.races %>
+	<% @races = ballot.races.order(:created_at) %>
 	<% count = 0 %>
 	<% no_preference = 0 %>
 
