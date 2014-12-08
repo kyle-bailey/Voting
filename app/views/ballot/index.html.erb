@@ -1,3 +1,5 @@
+<!-- Breakdown of the six: !-->
+
 <% non_seq_total_votes = 0 %>
 <% non_seq_total_voters = 0 %>
 <% non_seq_total_duration = 0 %>
@@ -17,6 +19,32 @@
 <% rice_total_votes = 0 %>
 <% rice_total_voters = 0 %>
 <% rice_total_duration = 0 %>
+
+<!-- Breakdown of the six: !-->
+
+<% rice_non_total_votes = 0 %>
+<% rice_non_total_voters = 0 %>
+<% rice_non_total_duration = 0 %>
+
+<% pol_non_total_votes = 0 %>
+<% pol_non_total_voters = 0 %>
+<% pol_non_total_duration = 0 %>
+
+<% rice_seq_total_votes = 0 %>
+<% rice_seq_total_voters = 0 %>
+<% rice_seq_total_duration = 0 %>
+
+<% pol_seq_total_votes = 0 %>
+<% pol_seq_total_voters = 0 %>
+<% pol_seq_total_duration = 0 %>
+
+<% rice_seq_ex_total_votes = 0 %>
+<% rice_seq_ex_total_voters = 0 %>
+<% rice_seq_ex_total_duration = 0 %>
+
+<% pol_seq_ex_total_votes = 0 %>
+<% pol_seq_ex_total_voters = 0 %>
+<% pol_seq_ex_total_duration = 0 %>
 
 <% @ballots.each do |ballot| %>
 
@@ -46,6 +74,21 @@
 		<% if ballot.finished_at != nil %>
 			<% non_seq_total_duration = non_seq_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 		<% end %>
+
+		<% if ballot.theme == "political" %>
+			<% pol_non_total_voters = pol_non_total_voters + 1 %>
+			<% pol_non_total_votes = pol_non_total_votes + count %>
+			<% if ballot.finished_at != nil %>
+				<% pol_non_total_duration = pol_non_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+			<% end %>
+		<% else %>
+			<% rice_non_total_voters = rice_non_total_voters + 1 %>
+			<% rice_non_total_votes = rice_non_total_votes + count %>
+			<% if ballot.finished_at != nil %>
+				<% rice_non_total_duration = rice_non_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+			<% end %>
+		<% end %>
+
 	<% end %>
 
 	<% if ballot.organization == "s_expl_after" %>
@@ -54,6 +97,22 @@
 		<% if ballot.finished_at != nil %>
 			<% seq_exp_total_duration = seq_exp_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 		<% end %>
+
+		<% if ballot.theme == "political" %>
+			<% pol_seq_ex_total_voters = pol_seq_ex_total_voters + 1 %>
+			<% pol_seq_ex_total_votes = pol_seq_ex_total_votes + count %>
+			<% if ballot.finished_at != nil %>
+				<% pol_seq_ex_total_duration = pol_seq_ex_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+			<% end %>
+		<% else %>
+			<% rice_seq_ex_total_voters = rice_seq_ex_total_voters + 1 %>
+			<% rice_seq_ex_total_votes = rice_seq_ex_total_votes + count %>
+			<% if ballot.finished_at != nil %>
+				<% rice_seq_ex_total_duration = rice_seq_ex_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+			<% end %>
+		<% end %>
+
+
 	<% end %>
 
 	<% if ballot.organization == "s_after" %>
@@ -62,6 +121,22 @@
 		<% if ballot.finished_at != nil %>
 			<% seq_total_duration = seq_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 		<% end %>
+
+		<% if ballot.theme == "political" %>
+			<% pol_seq_total_voters = pol_seq_total_voters + 1 %>
+			<% pol_seq_total_votes = pol_seq_total_votes + count %>
+			<% if ballot.finished_at != nil %>
+				<% pol_seq_total_duration = pol_seq_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+			<% end %>
+		<% else %>
+			<% rice_seq_total_voters = rice_seq_total_voters + 1 %>
+			<% rice_seq_total_votes = rice_seq_total_votes + count %>
+			<% if ballot.finished_at != nil %>
+				<% rice_seq_total_duration = rice_seq_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+			<% end %>
+		<% end %>
+
+
 	<% end %>
 
 	<% if ballot.theme == "rice" %>
@@ -101,14 +176,46 @@
 <p><b>Sequential Data:</b></p>
 <p>Number of Voters: <%= seq_total_voters %></p>
 <p>Average # of votes: <%= seq_total_votes / seq_total_voters.to_f %></p>
-<p>Average duration: <%= seq_total_duration / seq_total_voters %></p>
+<p>Average duration: <%= seq_total_duration / seq_total_voters %></p></br>
 
 <p><b>Rice Data:</b></p>
 <p>Number of Voters: <%= rice_total_voters %></p>
 <p>Average # of votes: <%= rice_total_votes / rice_total_voters.to_f %></p>
-<p>Average duration: <%= rice_total_duration / rice_total_voters %></p>
+<p>Average duration: <%= rice_total_duration / rice_total_voters %></p></br>
 
 <p><b>Political Data:</b></p>
 <p>Number of Voters: <%= pol_total_voters %></p>
 <p>Average # of votes: <%= pol_total_votes / pol_total_voters.to_f %></p>
-<p>Average duration: <%= pol_total_duration / pol_total_voters %></p>
+<p>Average duration: <%= pol_total_duration / pol_total_voters %></p></br>
+
+<!-- Six Breakdown: !-->
+
+<p><b>Rice Non Data:</b></p>
+<p>Number of Voters: <%= rice_non__total_voters %></p>
+<p>Average # of votes: <%= rice_non_total_votes / rice_non_total_voters.to_f %></p>
+<p>Average duration: <%= rice_non_total_duration / rice_non_total_voters %></p></br>
+
+<p><b>Pol Non Data:</b></p>
+<p>Number of Voters: <%= pol_non_total_voters %></p>
+<p>Average # of votes: <%= pol_non_total_votes / pol_non_total_voters.to_f %></p>
+<p>Average duration: <%= pol_non_total_duration / pol_non_total_voters %></p></br>
+
+<p><b>Rice Seq Data:</b></p>
+<p>Number of Voters: <%= rice_seq_total_voters %></p>
+<p>Average # of votes: <%= rice_seq_total_votes / rice_seq_total_voters.to_f %></p>
+<p>Average duration: <%= rice_seq_total_duration / rice_seq_total_voters %></p></br>
+
+<p><b>Pol Seq Data:</b></p>
+<p>Number of Voters: <%= pol_seq_total_voters %></p>
+<p>Average # of votes: <%= pol_seq_total_votes / pol_seq_total_voters.to_f %></p>
+<p>Average duration: <%= pol_seq_total_duration / pol_seq_total_voters %></p></br>
+
+<p><b>Rice Seq Ex Data:</b></p>
+<p>Number of Voters: <%= rice_seq_ex_total_voters %></p>
+<p>Average # of votes: <%= rice_seq_ex_total_votes / rice_seq_ex_total_voters.to_f %></p>
+<p>Average duration: <%= rice_seq_ex_total_duration / rice_seq_ex_total_voters %></p></br>
+
+<p><b>Pol Seq Ex Data:</b></p>
+<p>Number of Voters: <%= pol_seq_ex_total_voters %></p>
+<p>Average # of votes: <%= pol_seq_ex_total_votes / pol_seq_ex_total_voters.to_f %></p>
+<p>Average duration: <%= pol_seq_ex_total_duration / pol_seq_ex_total_voters %></p>
