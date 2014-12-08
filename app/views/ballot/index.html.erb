@@ -10,6 +10,14 @@
 <% seq_total_voters = 0 %>
 <% seq_total_duration = 0 %>
 
+<% pol_total_votes = 0 %>
+<% pol_total_voters = 0 %>
+<% pol_total_duration = 0 %>
+
+<% rice_total_votes = 0 %>
+<% rice_total_voters = 0 %>
+<% rice_total_duration = 0 %>
+
 <% @ballots.each do |ballot| %>
 
 	<% next if ballot.id == 66 || ballot.id == 87 || ballot.id == 89 || ballot.id == 96 || ballot.id == 99 || ballot.id == 98 || ballot.id == 97 || ballot.id == 47 || ballot.id == 52 %>
@@ -56,6 +64,22 @@
 		<% end %>
 	<% end %>
 
+	<% if ballot.theme == "rice" %>
+		<% rice_total_voters = rice_total_voters + 1 %>
+		<% rice_total_votes = rice_total_votes + count - no_preference%>
+		<% if ballot.finished_at != nil %>
+			<% rice_total_duration = rice_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+		<% end %>
+	<% end %>
+
+	<% if ballot.theme == "political" %>
+		<% pol_total_voters = pol_total_voters + 1 %>
+		<% pol_total_votes = pol_total_votes + count %>
+		<% if ballot.finished_at != nil %>
+			<% pol_total_duration = pol_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+		<% end %>
+	<% end %>
+
 	</br>Voted in: <%= count %>/<%= @races.count %> races</br>
 	<% if ballot.organization == "s_expl_after" || ballot.organization == "s_exp" %>
 		Voted "No Preference" <%= no_preference %> times</br>
@@ -78,3 +102,13 @@
 <p>Number of Voters: <%= seq_total_voters %></p>
 <p>Average # of votes: <%= seq_total_votes / seq_total_voters.to_f %></p>
 <p>Average duration: <%= seq_total_duration / seq_total_voters %></p>
+
+<p><b>Rice Data:</b></p>
+<p>Number of Voters: <%= rice_total_voters %></p>
+<p>Average # of votes: <%= rice_total_votes / rice_total_voters.to_f %></p>
+<p>Average duration: <%= rice_total_duration / rice_total_voters %></p>
+
+<p><b>Political Data:</b></p>
+<p>Number of Voters: <%= pol_total_voters %></p>
+<p>Average # of votes: <%= pol_total_votes / pol_total_voters.to_f %></p>
+<p>Average duration: <%= pol_total_duration / pol_total_voters %></p>
