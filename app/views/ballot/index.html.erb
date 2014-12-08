@@ -1,3 +1,7 @@
+<% non_seq_total_votes = 0 %>
+<% non_seq_total_voters = 0 %>
+<% non_seq_total_duration = 0 %>
+
 <% @ballots.each do |ballot| %>
 	<%= ballot.id %></br>
 	<%= ballot.theme %></br>
@@ -8,6 +12,7 @@
 	<% @races = ballot.races %>
 	<% count = 0 %>
 	<% no_preference = 0 %>
+
 	<% @races.each do |r| %>
 		<% if r.vote != nil %>
 			<% count = count + 1 %>
@@ -16,9 +21,24 @@
 			<% end %>
 		<% end %>
 	<% end %>
+
+	<% if ballot.organization == "n" %>
+		<% non_seq_total_voters = non_seq_total_voters + 1 %>
+		<% non_seq_total_votes = non_seq_total_votes + count %>
+		<% if ballot.finished_at != nil %>
+			<% non_seq_total_duration = non_seq_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
+		<% end %>
+	<% end %>
+
 	</br>Voted in: <%= count %>/<%= @races.count %> races</br>
 	<% if ballot.organization == "s_expl_after" || ballot.organization == "s_exp" %>
 		Voted "No Preference" <%= no_preference %> times</br>
 	<% end %>
+	
 	</br>
 <% end %>
+
+<p>Non Sequential Data:</p>
+<p>Number of Voters: <%= non_seq_total_voters %></p>
+<p>Average # of votes: <%= non_seq_total_votes / (non_seq_total_voters * 27) %></p>
+<p>Average duration: <%= non_seq_total_duration %></p>
