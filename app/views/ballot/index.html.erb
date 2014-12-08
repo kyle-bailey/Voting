@@ -65,6 +65,9 @@
 
 	<% position = 0 %>
 	<% @races.each do |r| %>
+		<% if position = 0 %>
+			<%= r.title %>
+		<% end %>
 		<% if r.vote != nil %>
 			<% if ballot.theme == "political" %>
 				<% political_races[position] = political_races[position] + 1 %>
