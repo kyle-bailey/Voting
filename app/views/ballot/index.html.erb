@@ -11,6 +11,8 @@
 <% seq_total_duration = 0 %>
 
 <% @ballots.each do |ballot| %>
+
+	<% next if ballot.id == 66 || ballot.id == 87 || ballot.id == 89 || ballot.id == 96 || ballot.id == 99 || ballot.id == 98 || ballot.id == 97 || ballot.id == 47 || ballot.id == 52 %>
 	<%= ballot.id %></br>
 	<%= ballot.theme %></br>
 	<%= ballot.organization %></br>
