@@ -46,6 +46,10 @@
 <% pol_seq_ex_total_voters = 0 %>
 <% pol_seq_ex_total_duration = 0 %>
 
+<!-- Per race breakdown !-->
+<% political_races = Array.new(27, 0) %>
+<% rice_races = Array.new(27, 0) %>
+
 <% @ballots.each do |ballot| %>
 
 	<% next if ballot.id == 66 || ballot.id == 87 || ballot.id == 89 || ballot.id == 96 || ballot.id == 99 || ballot.id == 98 || ballot.id == 97 || ballot.id == 47 || ballot.id == 52 %>
@@ -59,13 +63,22 @@
 	<% count = 0 %>
 	<% no_preference = 0 %>
 
+	<% position = 0 %>
 	<% @races.each do |r| %>
 		<% if r.vote != nil %>
+			<% if ballot.theme == "political" %>
+				<% political_races[position] = political_races[position] + 1 %>
+			<% else %>
+				<% rice_races[position] = rice_races[position] + 1 %>
+			<% end %>
+
 			<% count = count + 1 %>
 			<% if r.vote.candidate == "No Preference"%>
 				<% no_preference = no_preference + 1 %>
 			<% end %>
+
 		<% end %>
+		<% position = position + 1 %>
 	<% end %>
 
 	<% if ballot.organization == "n" %>
@@ -218,4 +231,10 @@
 <p><b>Pol Seq Ex Data:</b></p>
 <p>Number of Voters: <%= pol_seq_ex_total_voters %></p>
 <p>Average # of votes: <%= pol_seq_ex_total_votes / pol_seq_ex_total_voters.to_f %></p>
-<p>Average duration: <%= pol_seq_ex_total_duration / pol_seq_ex_total_voters %></p>
+<p>Average duration: <%= pol_seq_ex_total_duration / pol_seq_ex_total_voters %></p></br>
+
+<% rice_races.collect { |n| n / rice_total_voters.to_f } %>
+<% political_races.collect { |n| n / pol_total_voters.to_f } %>
+
+<p>Political Races: <%= political_races.to_s %></p></br>
+<p>Rice Races: <%= rice_races.to_s %></p></br>
