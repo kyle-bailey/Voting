@@ -65,7 +65,7 @@
 
 	<% position = 0 %>
 	<% @races.each do |r| %>
-		<% if position = 0 %>
+		<% if position == 0 %>
 			<%= r.title %>
 		<% end %>
 		<% if r.vote != nil %>
