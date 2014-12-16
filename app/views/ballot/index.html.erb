@@ -60,6 +60,7 @@
 <% males = 0 %>
 <% females = 0 %>
 <% age = 0 %>
+<% age_count = 0 %>
 
 <% @ballots.each do |ballot| %>
 
@@ -81,7 +82,7 @@
 		<% end %>
 		<% if @demographics.age %>
 			<% age = age + @demographics.age %>
-			<p> AGE: <%= age %> </p>
+			<% age_count = age_count + 1 %>
 		<% end %>
 	<% end %>
 
@@ -294,4 +295,4 @@
 
 <p>Males: <%= males %></p></br>
 <p>Females: <%= females %></p></br>
-<p>Age: <%= age / 44.to_f %></p></br>
+<p>Age: <%= age / age_count.to_f %></p></br>
