@@ -71,6 +71,7 @@
 	<% no_preference = 0 %>
 
 	<% position = 0 %>
+	<% last_race = nil %>
 	<% @races.each do |r| %>
 		<% if position == 0 %>
 			<%= r.title %>
@@ -88,14 +89,14 @@
 				<% if position == 0 %>
 					<% prev_seq = ((r.updated_at - ballot.created_at)/60).round %>
 				<% else %>
-					<% prev_seq = ((r.updated_at.to_i)/60).round - prev_seq %>
+					<% prev_seq = ((r.updated_at - last_race.updated_at)/60).round %>
 				<% end %>
 				<% seq_races[position] = seq_races[position] + prev_seq %>
 			<% elsif ballot.organization == "s_after" %>
 				<% if position == 0 %>
 					<% prev_seq_exp = ((r.updated_at - ballot.created_at)/60).round %>
 				<% else %>
-					<% prev_seq_exp = ((r.updated_at.to_i)/60).round - prev_seq_exp %>
+					<% prev_seq_exp = ((r.updated_at - last_race.updated_at)/60).round %>
 				<% end %>
 				<% seq_exp_races[position] = seq_races[position] + prev_seq_exp %>
 			<% end %>
@@ -107,6 +108,7 @@
 
 		<% end %>
 		<% position = position + 1 %>
+		<% last_race = r %>
 	<% end %>
 
 	<% if ballot.organization == "n" %>
