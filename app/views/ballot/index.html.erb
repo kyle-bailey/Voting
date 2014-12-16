@@ -71,6 +71,16 @@
 		<%= distance_of_time_in_words(ballot.created_at, ballot.finished_at) %>
 	<% end %>
 	<% @races = ballot.races.order(:created_at) %>
+	<% @demographics = ballot.demographics %>
+
+	<% if demographics.gender == "male" %>
+		<% males = males + 1 %>
+	<% elsif demographics.gener == "female" %>
+		<% females = females + 1 %>
+	<% end %>
+
+	<% age = age + demographics.age %>
+
 	<% count = 0 %>
 	<% no_preference = 0 %>
 
@@ -91,14 +101,14 @@
 
 			<% elsif ballot.organization == "s_expl_after" %>
 				<% if position == 0 %>
-					<% prev_seq = (r.updated_at - ballot.created_at) %>
+					<% prev_seq = (r.updated_at - demographics.updated_at) %>
 				<% else %>
 					<% prev_seq = (r.updated_at - last_race.updated_at) %>
 				<% end %>
 				<% seq_races[position] = seq_races[position] + prev_seq %>
 			<% elsif ballot.organization == "s_after" %>
 				<% if position == 0 %>
-					<% prev_seq_exp = (r.updated_at - ballot.created_at) %>
+					<% prev_seq_exp = (r.updated_at - demographics.updated_at) %>
 				<% else %>
 					<% prev_seq_exp = (r.updated_at - last_race.updated_at) %>
 				<% end %>
@@ -277,3 +287,7 @@
 
 <p>Seq Times: <%= new_seq.to_s %></p></br>
 <p>Seq Exp Times: <%= new_seq_exp.to_s %></p></br>
+
+<p>Males: <%= males %></p></br>
+<p>Females: <%= females %></p></br>
+<p>Age: <%= age / 44.to_f %></p></br>
