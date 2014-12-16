@@ -50,6 +50,13 @@
 <% political_races = Array.new(27, 0) %>
 <% rice_races = Array.new(27, 0) %>
 
+<!-- Average time per race !-->
+<% non_seq_races = Array.new(27, 0) %>
+<% seq_races = Array.new(27, 0) %>
+<% seq_exp_races = Array.new(27, 0) %>
+<% prev_seq = 0 %>
+<% prev_seq_exp = 0 %> 
+
 <% @ballots.each do |ballot| %>
 
 	<% next if ballot.id == 66 || ballot.id == 87 || ballot.id == 89 || ballot.id == 96 || ballot.id == 99 || ballot.id == 98 || ballot.id == 97 || ballot.id == 47 || ballot.id == 52 %>
@@ -73,6 +80,24 @@
 				<% political_races[position] = political_races[position] + 1 %>
 			<% else %>
 				<% rice_races[position] = rice_races[position] + 1 %>
+			<% end %>
+
+			<% if ballot.organization == "n" %>
+
+			<% elsif ballot.organization == "s_expl_after" %>
+				<% if position == 0 %>
+					<% prev_seq = ((r.updated_at - ballot.created_at)/60).round %>
+				<% else %>
+					<% prev_seq = ((r.updated_at - prev_seq)/60).round %>
+				<% end %>
+				<% seq_races[position] = seq_races[position] + prev_seq %>
+			<% elsif ballot.organization == "s_after" %>
+				<% if position == 0 %>
+					<% prev_seq_exp = ((r.updated_at - ballot.created_at)/60).round %>
+				<% else %>
+					<% prev_seq_exp = ((r.updated_at - prev_seq_exp)/60).round %>
+				<% end %>
+				<% seq_exp_races[position] = seq_races[position] + prev_seq_exp %>
 			<% end %>
 
 			<% count = count + 1 %>
@@ -241,3 +266,6 @@
 
 <p>Political Races: <%= political_races.to_s %></p></br>
 <p>Rice Races: <%= rice_races.to_s %></p></br>
+
+<p>Seq Times: <%= seq_races.to_s %></p></br>
+<p>Seq Exp Times: <%= seq_exp_races.to_s %></p></br>
