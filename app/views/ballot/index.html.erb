@@ -64,6 +64,7 @@
 <% @ballots.each do |ballot| %>
 
 	<% next if ballot.id == 66 || ballot.id == 87 || ballot.id == 89 || ballot.id == 96 || ballot.id == 99 || ballot.id == 98 || ballot.id == 97 || ballot.id == 47 || ballot.id == 52 %>
+	<% next if ballot.organization != "n" || ballot.organization != "s_after" || ballot.organization != "s_exp_after" %>
 	<%= ballot.id %></br>
 	<%= ballot.theme %></br>
 	<%= ballot.organization %></br>
@@ -73,13 +74,13 @@
 	<% @races = ballot.races.order(:created_at) %>
 	<% @demographics = ballot.demographics %>
 
-	<% if demographics.gender == "male" %>
+	<% if @demographics.gender == "male" %>
 		<% males = males + 1 %>
-	<% elsif demographics.gener == "female" %>
+	<% elsif @demographics.gener == "female" %>
 		<% females = females + 1 %>
 	<% end %>
 
-	<% age = age + demographics.age %>
+	<% age = age + @demographics.age %>
 
 	<% count = 0 %>
 	<% no_preference = 0 %>
