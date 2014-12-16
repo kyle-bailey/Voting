@@ -269,6 +269,8 @@
 
 <% rice_races.collect { |n| n / rice_total_voters.to_f } %>
 <% political_races.collect { |n| n / pol_total_voters.to_f } %>
+<% seq_races.collect { |n| n / seq_total_voters.to_f } %>
+<% seq_exp_races.collect { |n| n / seq_exp_total_voters.to_f } %>
 
 <p>Political Races: <%= political_races.to_s %></p></br>
 <p>Rice Races: <%= rice_races.to_s %></p></br>
