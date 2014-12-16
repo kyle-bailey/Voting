@@ -79,7 +79,9 @@
 		<% elsif @demographics.gender == "female" %>
 			<% females = females + 1 %>
 		<% end %>
-		<% age = age + @demographics.age %>
+		<% if @demographics.age %>
+			<% age = age + @demographics.age %>
+		<% end %>
 	<% end %>
 
 	<% count = 0 %>
