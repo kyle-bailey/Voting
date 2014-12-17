@@ -140,12 +140,12 @@
 	<% if ballot.organization == "n" %>
 		<% non_seq_total_voters = non_seq_total_voters + 1 %>
 		<% non_seq_total_votes = non_seq_total_votes + count %>
-		<% non_seq_votes[ballot_num] = count %>
 		<% if ballot.finished_at != nil %>
 			<% non_seq_total_duration = non_seq_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 		<% end %>
 
 		<% if ballot.theme == "political" %>
+			<% non_seq_votes[ballot_num] = count %>
 			<% pol_non_total_voters = pol_non_total_voters + 1 %>
 			<% pol_non_total_votes = pol_non_total_votes + count %>
 			<% if ballot.finished_at != nil %>
@@ -164,12 +164,12 @@
 	<% if ballot.organization == "s_expl_after" %>
 		<% seq_exp_total_voters = seq_exp_total_voters + 1 %>
 		<% seq_exp_total_votes = seq_exp_total_votes + count - no_preference %>
-		<% seq_exp_votes[ballot_num] = count - no_preference %>
 		<% if ballot.finished_at != nil %>
 			<% seq_exp_total_duration = seq_exp_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 		<% end %>
 
 		<% if ballot.theme == "political" %>
+			<% seq_exp_votes[ballot_num] = count - no_preference %>
 			<% pol_seq_ex_total_voters = pol_seq_ex_total_voters + 1 %>
 			<% pol_seq_ex_total_votes = pol_seq_ex_total_votes + count - no_preference %>
 			<% if ballot.finished_at != nil %>
@@ -189,12 +189,12 @@
 	<% if ballot.organization == "s_after" %>
 		<% seq_total_voters = seq_total_voters + 1 %>
 		<% seq_total_votes = seq_total_votes + count %>
-		<% seq_votes[ballot_num] = count %>
 		<% if ballot.finished_at != nil %>
 			<% seq_total_duration = seq_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 		<% end %>
 
 		<% if ballot.theme == "political" %>
+			<% seq_votes[ballot_num] = count %>
 			<% pol_seq_total_voters = pol_seq_total_voters + 1 %>
 			<% pol_seq_total_votes = pol_seq_total_votes + count %>
 			<% if ballot.finished_at != nil %>
