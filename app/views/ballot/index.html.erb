@@ -158,7 +158,6 @@
 				<% rice_non_total_duration = rice_non_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 			<% end %>
 		<% end %>
-
 	<% end %>
 
 	<% if ballot.organization == "s_expl_after" %>
@@ -182,8 +181,6 @@
 				<% rice_seq_ex_total_duration = rice_seq_ex_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 			<% end %>
 		<% end %>
-
-
 	<% end %>
 
 	<% if ballot.organization == "s_after" %>
@@ -207,8 +204,6 @@
 				<% rice_seq_total_duration = rice_seq_total_duration + ((ballot.finished_at - ballot.created_at)/60).round %>
 			<% end %>
 		<% end %>
-
-
 	<% end %>
 
 	<% if ballot.theme == "rice" %>
